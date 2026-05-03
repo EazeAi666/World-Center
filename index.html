@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Center — Founded by Adesina Israel @2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #E8B84B;
+  --gold2: #f5d080;
+  --black: #080808;
+  --dark: #0f0f0f;
+  --card: #141414;
+  --card2: #1a1a1a;
+  --border: #242424;
+  --border2: #2e2e2e;
+  --text: #e2e2e2;
+  --muted: #777;
+  --muted2: #555;
+  --green: #4ade80;
+  --blue: #60a5fa;
+  --red: #f87171;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden;cursor:default;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+
+/* GRAIN OVERLAY */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.6;}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(8,8,8,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0;padding:0 16px;height:52px;}
+.topbar-logo{display:flex;align-items:center;gap:10px;margin-right:auto;text-decoration:none;}
+.logo-icon{width:32px;height:32px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#fff;line-height:1;letter-spacing:0.5px;}
+.logo-sub{font-size:0.6rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.nav-tabs{display:flex;gap:0;height:100%;}
+.nav-tab{padding:0 14px;height:100%;display:flex;align-items:center;font-size:0.75rem;font-weight:600;letter-spacing:0.5px;color:var(--muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;}
+.nav-tab:hover,.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+@media(max-width:600px){.nav-tab{padding:0 10px;font-size:0.68rem;}}
+@media(max-width:420px){.nav-tab span{display:none;}.nav-tab::before{font-size:1rem;}}
+
+/* PAGES */
+.page{display:none;min-height:calc(100vh - 52px);}
+.page.active{display:block;}
+
+/* CONTAINER */
+.wrap{max-width:960px;margin:0 auto;padding:24px 16px 60px;}
+
+/* HERO */
+.hero{padding:40px 16px 0;max-width:960px;margin:0 auto;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:3px;color:var(--gold);margin-bottom:12px;opacity:0.8;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,7vw,4.5rem);font-weight:700;line-height:1.05;color:#fff;margin-bottom:12px;}
+.hero-title em{color:var(--gold);font-style:italic;}
+.hero-sub{font-size:0.85rem;color:var(--muted);max-width:480px;line-height:1.7;margin-bottom:28px;}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:32px;}
+.h-stat{border-left:2px solid var(--gold);padding-left:12px;}
+.h-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);line-height:1;}
+.h-stat-label{font-size:0.7rem;color:var(--muted);letter-spacing:1px;}
+.hero-divider{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:32px;opacity:0.3;}
+
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
+.sec-line{flex:1;height:1px;background:var(--border);}
+
+/* CARDS */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;}
+@media(max-width:700px){.grid3,.grid4{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.grid2,.grid3,.grid4{grid-template-columns:1fr;}}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;transition:all 0.25s;animation:riseUp 0.4s ease both;}
+.card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 32px rgba(232,184,75,0.08);}
+.card.clickable{cursor:pointer;}
+
+/* TOOLS GRID */
+.tool-btn{display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 14px;cursor:pointer;text-decoration:none;color:var(--text);transition:all 0.2s;animation:riseUp 0.4s ease both;}
+.tool-btn:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 24px rgba(232,184,75,0.1);}
+.tool-btn:active{transform:scale(0.97);}
+.tool-icon{font-size:1.8rem;}
+.tool-name{font-size:0.88rem;font-weight:700;color:#fff;}
+.tool-desc{font-size:0.72rem;color:var(--muted);line-height:1.5;}
+.tool-badge{display:inline-block;font-size:0.62rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:4px;letter-spacing:0.5px;}
+.badge-free{background:rgba(74,222,128,0.12);color:var(--green);}
+.badge-fm{background:rgba(232,184,75,0.12);color:var(--gold);}
+.badge-ext{background:rgba(96,165,250,0.12);color:var(--blue);}
+
+/* AUTHOR PROFILES */
+.author-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all 0.25s;animation:riseUp 0.4s ease both;text-decoration:none;color:var(--text);display:block;}
+.author-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 10px 40px rgba(232,184,75,0.1);}
+.author-banner{height:72px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative;overflow:hidden;}
+.author-body{padding:14px;}
+.author-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:-32px 0 8px;background:var(--card2);position:relative;}
+.author-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.author-title{font-size:0.7rem;color:var(--gold);letter-spacing:0.5px;margin-bottom:8px;}
+.author-bio{font-size:0.73rem;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+.author-books-count{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted2);letter-spacing:1px;}
+.view-profile-btn{margin-top:10px;width:100%;padding:8px;background:rgba(232,184,75,0.08);border:1px solid rgba(232,184,75,0.2);border-radius:8px;color:var(--gold);font-size:0.75rem;font-weight:600;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;}
+.view-profile-btn:hover{background:rgba(232,184,75,0.18);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity 0.25s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:18px;width:100%;max-width:680px;max-height:88vh;overflow-y:auto;transform:translateY(20px);transition:transform 0.25s;position:relative;}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal-head{padding:24px 24px 0;display:flex;align-items:flex-start;gap:16px;position:sticky;top:0;background:var(--card);z-index:10;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.modal-avatar{width:60px;height:60px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;background:var(--card2);}
+.modal-title-area{flex:1;}
+.modal-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;line-height:1.1;}
+.modal-role{font-size:0.75rem;color:var(--gold);margin-top:2px;}
+.modal-close{width:32px;height:32px;border-radius:8px;background:var(--border);border:none;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:background 0.2s;}
+.modal-close:hover{background:var(--border2);}
+.modal-body{padding:20px 24px 24px;}
+.modal-bio{font-size:0.85rem;color:var(--muted);line-height:1.8;margin-bottom:20px;font-family:'Cormorant Garamond',serif;font-size:1rem;}
+.modal-section-title{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.book-list{display:flex;flex-direction:column;gap:8px;}
+.book-item{display:flex;align-items:flex-start;gap:12px;padding:12px;background:var(--dark);border:1px solid var(--border);border-radius:10px;cursor:pointer;text-decoration:none;color:var(--text);transition:border-color 0.2s;}
+.book-item:hover{border-color:var(--gold);}
+.book-num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted2);min-width:24px;margin-top:2px;}
+.book-info h5{font-size:0.88rem;font-weight:600;color:#fff;margin-bottom:2px;}
+.book-info p{font-size:0.73rem;color:var(--muted);line-height:1.5;}
+.book-year{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gold);margin-left:auto;flex-shrink:0;}
+
+/* EPISODE CARDS */
+.ep-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:10px;transition:border-color 0.2s;animation:riseUp 0.4s ease both;}
+.ep-card:hover{border-color:var(--gold);}
+.ep-num-badge{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);min-width:36px;text-align:center;}
+.ep-info{flex:1;}
+.ep-info h4{font-size:0.9rem;font-weight:600;}
+.ep-info p{font-size:0.73rem;color:var(--muted);margin-top:2px;}
+.ep-plays{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--muted);text-align:right;}
+.ep-plays strong{display:block;font-size:1.2rem;color:var(--gold);}
+.dot-live{width:7px;height:7px;background:var(--green);border-radius:50%;display:inline-block;margin-right:5px;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;};}
+
+/* WORKFLOW STEPS */
+.workflow{display:flex;gap:0;margin-bottom:28px;overflow-x:auto;padding-bottom:2px;}
+.wf-step{flex:1;min-width:100px;background:var(--card);border:1px solid var(--border);border-right:none;padding:14px 10px;text-align:center;position:relative;transition:border-color 0.2s;}
+.wf-step:hover{border-color:var(--gold);}
+.wf-step:first-child{border-radius:10px 0 0 10px;}
+.wf-step:last-child{border-right:1px solid var(--border);border-radius:0 10px 10px 0;}
+.wf-step::after{content:'›';position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:1.3rem;color:var(--gold);z-index:2;}
+.wf-step:last-child::after{display:none;}
+.wf-icon{font-size:1.3rem;margin-bottom:5px;}
+.wf-title{font-size:0.78rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.wf-sub{font-size:0.65rem;color:var(--muted);line-height:1.4;}
+
+/* TOPIC CARDS */
+.topic-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;gap:10px;cursor:pointer;transition:all 0.2s;animation:riseUp 0.4s ease both;}
+.topic-item:hover{border-color:var(--gold);transform:translateX(3px);}
+.topic-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.t-h5{font-size:0.85rem;font-weight:600;margin-bottom:3px;}
+.t-p{font-size:0.73rem;color:var(--muted);line-height:1.5;}
+
+/* GOAL TRACKER */
+.goal-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.gcheck{width:22px;height:22px;border-radius:6px;border:1.5px solid var(--border2);background:none;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:all 0.2s;color:transparent;}
+.gcheck.done{background:var(--gold);border-color:var(--gold);color:#000;}
+.goal-text{flex:1;font-size:0.83rem;}
+.goal-text.x{text-decoration:line-through;color:var(--muted);}
+.goal-meta{font-size:0.7rem;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* SEARCH */
+.search-bar{display:flex;gap:10px;margin-bottom:20px;}
+.search-input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 16px;color:var(--text);font-family:'Syne',sans-serif;font-size:0.85rem;outline:none;transition:border-color 0.2s;}
+.search-input:focus{border-color:var(--gold);}
+.search-input::placeholder{color:var(--muted2);}
+.search-btn{padding:10px 20px;background:var(--gold);border:none;border-radius:10px;color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;transition:opacity 0.2s;}
+.search-btn:hover{opacity:0.85;}
+
+/* DICTIONARY WIDGET */
+.dict-result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none;}
+.dict-word{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#fff;}
+.dict-phonetic{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--gold);margin:4px 0 12px;}
+.dict-pos{font-size:0.7rem;color:var(--blue);font-style:italic;margin-bottom:6px;font-weight:600;letter-spacing:0.5px;}
+.dict-def{font-size:0.88rem;color:var(--text);line-height:1.8;margin-bottom:8px;font-family:'Cormorant Garamond',serif;font-size:1rem;}
+.dict-example{font-size:0.82rem;color:var(--muted);font-style:italic;padding-left:12px;border-left:2px solid var(--gold);margin-bottom:12px;}
+
+/* WIKI WIDGET */
+.wiki-result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;display:none;}
+.wiki-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:8px;}
+.wiki-excerpt{font-size:0.88rem;color:var(--muted);line-height:1.8;font-family:'Cormorant Garamond',serif;font-size:0.95rem;}
+.wiki-link{display:inline-block;margin-top:12px;color:var(--gold);font-size:0.8rem;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(232,184,75,0.3);transition:border-color 0.2s;}
+.wiki-link:hover{border-color:var(--gold);}
+
+/* REFERENCE LINKS */
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:28px;}
+.ref-card{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;text-decoration:none;color:var(--text);transition:all 0.2s;animation:riseUp 0.4s ease both;}
+.ref-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.ref-icon{font-size:1.4rem;flex-shrink:0;}
+.ref-name{font-size:0.82rem;font-weight:600;}
+.ref-sub{font-size:0.68rem;color:var(--muted);}
+
+/* SCRIPT EDITOR */
+.script-editor{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:16px;color:var(--text);font-family:'Cormorant Garamond',serif;font-size:1.05rem;line-height:1.9;outline:none;resize:vertical;min-height:260px;transition:border-color 0.2s;caret-color:var(--gold);}
+.script-editor:focus{border-color:rgba(232,184,75,0.5);}
+.script-editor::placeholder{color:var(--muted2);font-style:italic;}
+
+/* SCRIPT TOOLBAR */
+.script-toolbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:var(--dark);border:1px solid var(--border);border-radius:10px 10px 0 0;padding:10px 12px;margin-bottom:-1px;border-bottom:none;}
+.stool-btn{display:inline-flex;align-items:center;gap:5px;background:var(--card2);border:1px solid var(--border);border-radius:7px;padding:6px 12px;color:var(--muted);font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.18s;white-space:nowrap;}
+.stool-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,184,75,0.07);}
+.stool-btn:active{transform:scale(0.96);}
+.stool-divider{width:1px;height:22px;background:var(--border);margin:0 2px;flex-shrink:0;}
+@media(max-width:480px){.stool-btn span{display:none;}.stool-btn{padding:6px 9px;font-size:0.85rem;}}
+
+/* SCRIPT GENERATOR */
+.script-area{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px;}
+.script-output{background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:16px;min-height:200px;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);line-height:1.9;white-space:pre-wrap;display:none;}
+.gen-controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.gen-select{flex:1;min-width:140px;background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-family:'Syne',sans-serif;font-size:0.8rem;outline:none;}
+.gen-select:focus{border-color:var(--gold);}
+.gen-btn{padding:9px 22px;background:var(--gold);border:none;border-radius:8px;color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;transition:opacity 0.2s;}
+.gen-btn:hover{opacity:0.85;}
+.gen-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.copy-btn{padding:9px 16px;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Syne',sans-serif;font-size:0.8rem;cursor:pointer;transition:all 0.2s;}
+.copy-btn:hover{border-color:var(--gold);color:var(--gold);}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(0,0,0,0.3);border-top-color:#000;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* LOADING DOTS */
+.loading-dots::after{content:'';animation:dots 1.2s infinite;}
+@keyframes dots{0%{content:'.';}33%{content:'..';}66%{content:'...';}100%{content:'';}}
+
+/* ANIMATIONS */
+@keyframes riseUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* FOOTER */
+.footer{text-align:center;padding:20px 16px 16px;font-size:0.72rem;color:var(--muted2);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;}
+.footer strong{color:var(--gold);}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--gold);color:#000;padding:10px 20px;border-radius:8px;font-size:0.82rem;font-weight:700;z-index:2000;opacity:0;transform:translateY(10px);transition:all 0.3s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* LANG PILLS */
+.lang-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px;}
+@media(max-width:500px){.lang-grid{grid-template-columns:repeat(3,1fr);}}
+.lang-pill{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 8px;cursor:pointer;color:var(--text);font-family:'Syne',sans-serif;font-size:1.6rem;text-align:center;transition:all 0.2s;line-height:1;}
+.lang-pill span{display:block;font-size:0.7rem;font-weight:600;margin-top:6px;color:var(--muted);}
+.lang-pill:hover{border-color:var(--gold);background:rgba(232,184,75,0.07);}
+.lang-pill.active{border-color:var(--gold);background:rgba(232,184,75,0.12);box-shadow:0 0 0 1px var(--gold);}
+.lang-pill.active span{color:var(--gold);}
+
+/* BACK BUTTON & BREADCRUMB NAV */
+.page-topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 16px 0;max-width:960px;margin:0 auto;}
+.back-btn{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:9px 16px;color:var(--muted);font-size:0.78rem;font-weight:600;cursor:pointer;letter-spacing:0.3px;transition:all 0.2s;font-family:'Syne',sans-serif;text-decoration:none;}
+.back-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,184,75,0.06);}
+.back-btn:active{transform:scale(0.97);}
+.back-btn .arr{font-size:1rem;line-height:1;transition:transform 0.2s;}
+.back-btn:hover .arr{transform:translateX(-3px);}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:1px;color:var(--muted2);}
+.breadcrumb span{color:var(--gold);}
+.breadcrumb .sep{color:var(--muted2);}
+
+/* SECTION NAV PILLS (quick jump buttons at bottom of each page) */
+.section-nav{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:32px 0 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.section-nav-label{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:2px;color:var(--muted);margin-right:4px;width:100%;margin-bottom:4px;}
+.jump-btn{display:inline-flex;align-items:center;gap:7px;background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--muted);font-size:0.76rem;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Syne',sans-serif;}
+.jump-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,184,75,0.06);}
+.jump-btn.current{border-color:rgba(232,184,75,0.4);color:var(--gold);background:rgba(232,184,75,0.08);cursor:default;}
+.jump-btn .j-icon{font-size:1rem;}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a class="topbar-logo" href="#" onclick="switchPage('home');return false;">
+    <div class="logo-icon">📡</div>
+    <div>
+      <div class="logo-text">Word Center</div>
+      <div class="logo-sub">FOUNDED BY ADESINA ISRAEL · 2026</div>
+    </div>
+  </a>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchPage('home')"><span>HOME</span></button>
+    <button class="nav-tab" onclick="switchPage('studio')"><span>STUDIO</span></button>
+    <button class="nav-tab" onclick="switchPage('library')"><span>LIBRARY</span></button>
+    <button class="nav-tab" onclick="switchPage('tools')"><span>TOOLS</span></button>
+    <button class="nav-tab" onclick="switchPage('research')"><span>RESEARCH</span></button>
+    <button class="nav-tab" onclick="switchPage('languages')"><span>🌍 LANGUAGES</span></button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- AUTHOR MODAL -->
+<div class="modal-overlay" id="authorModal" onclick="closeModal(event)">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-eyebrow">📡 WORD CENTER — PODCASTING ORGANIZATION</div>
+    <h1 class="hero-title">Where <em>Words</em><br>Become Worlds.</h1>
+    <p class="hero-sub">Your complete podcasting command center. Write, record, study, create — all in one place. Founded by Adesina Israel to inspire the next generation.</p>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-num">3</div><div class="h-stat-label">EPISODES LIVE</div></div>
+      <div class="h-stat"><div class="h-stat-num">14</div><div class="h-stat-label">AUTHORS IN LIBRARY</div></div>
+      <div class="h-stat"><div class="h-stat-num">5</div><div class="h-stat-label">LANGUAGES</div></div>
+      <div class="h-stat"><div class="h-stat-num">∞</div><div class="h-stat-label">STORIES TO TELL</div></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+      <button class="jump-btn" onclick="switchPage('studio')" style="background:var(--gold);color:#000;border-color:var(--gold);font-weight:700;">🎙️ Go to Studio</button>
+      <button class="jump-btn" onclick="switchPage('languages')" style="border-color:rgba(96,165,250,0.4);color:var(--blue);">🌍 Languages & Translate</button>
+    </div>
+    <div class="hero-divider"></div>
+  </div>
+
+  <div class="wrap">
+    <!-- QUICK ACTIONS -->
+    <div class="sec-head"><span class="sec-label">QUICK ACTIONS</span><div class="sec-line"></div></div>
+    <div class="grid4" style="margin-bottom:32px;">
+      <div class="tool-btn" onclick="switchPage('studio')">
+        <div class="tool-icon">🎙️</div>
+        <div class="tool-name">Studio</div>
+        <div class="tool-desc">Scripts, episodes & workflow</div>
+      </div>
+      <div class="tool-btn" onclick="switchPage('library')">
+        <div class="tool-icon">📚</div>
+        <div class="tool-name">Library</div>
+        <div class="tool-desc">Authors, books & wisdom</div>
+      </div>
+      <div class="tool-btn" onclick="switchPage('tools')">
+        <div class="tool-icon">🛠️</div>
+        <div class="tool-name">Tools</div>
+        <div class="tool-desc">Free podcast & AI tools</div>
+      </div>
+      <div class="tool-btn" onclick="switchPage('research')">
+        <div class="tool-icon">🔍</div>
+        <div class="tool-name">Research</div>
+        <div class="tool-desc">Dictionary, Wikipedia & more</div>
+      </div>
+      <div class="tool-btn" onclick="switchPage('languages')">
+        <div class="tool-icon">🌍</div>
+        <div class="tool-name">Languages</div>
+        <div class="tool-desc">Podcast in 5 languages + translate</div>
+      </div>
+    </div>
+
+    <!-- LIVE EPISODES -->
+    <div class="sec-head"><span class="sec-label">HEAVY CROWNS — LIVE EPISODES</span><div class="sec-line"></div></div>
+    <div class="ep-card" onclick="openEpModal('E3','True Meaning of Sacrifices','9:12','2','What does it truly cost to achieve greatness? This episode dives deep into the sacrifices made by icons — from sleepless nights to missed birthdays — and why every drop of sweat is a payment toward your crown.')">
+      <div class="ep-num-badge">E3</div>
+      <div class="ep-info"><h4>True Meaning of Sacrifices</h4><p><span class="dot-live"></span>Published · 1 May · 09:12</p></div>
+      <div class="ep-plays"><strong>2</strong>plays</div>
+    </div>
+    <div class="ep-card" onclick="openEpModal('E2','The Price of Greatness','5:22','3','Nothing great comes without a price. This episode explores the hidden costs of ambition — the relationships tested, the comfort zones shattered — and why those who pay the price always win in the end.')">
+      <div class="ep-num-badge">E2</div>
+      <div class="ep-info"><h4>The Price of Greatness</h4><p><span class="dot-live"></span>Published · 1 May · 05:22</p></div>
+      <div class="ep-plays"><strong>3</strong>plays</div>
+    </div>
+    <div class="ep-card" onclick="openEpModal('E1','The Weight of Greatness: Untold Stories','5:43','9','The most successful people in history carried invisible burdens. This flagship episode unpacks what it truly means to wear a heavy crown — and why the weight is the point.')">
+      <div class="ep-num-badge">E1</div>
+      <div class="ep-info"><h4>The Weight of Greatness: Untold Stories</h4><p><span class="dot-live"></span>Published · 1 May · 05:43</p></div>
+      <div class="ep-plays"><strong>9</strong>plays</div>
+    </div>
+
+    <!-- GOALS -->
+    <div class="sec-head" style="margin-top:32px;"><span class="sec-label">PODCAST CAREER GOALS</span><div class="sec-line"></div></div>
+    <div id="goals-container">
+      <div class="goal-row"><div class="gcheck done" onclick="toggleGoal(this)">✓</div><div class="goal-text x">Launch Heavy Crowns podcast</div><div class="goal-meta">DONE ✅</div></div>
+      <div class="goal-row"><div class="gcheck done" onclick="toggleGoal(this)">✓</div><div class="goal-text x">Publish first 3 episodes live</div><div class="goal-meta">DONE ✅</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Set up ElevenLabs voice clone</div><div class="goal-meta">WEEK 1</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Publish 10 total episodes</div><div class="goal-meta">MONTH 2</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Reach 10 Spotify followers</div><div class="goal-meta">MONTH 1</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Share every episode on WhatsApp, TikTok, Twitter</div><div class="goal-meta">ONGOING</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Reach 100 total plays</div><div class="goal-meta">MONTH 3</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Launch second podcast show</div><div class="goal-meta">MONTH 4</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Build Word Center website live</div><div class="goal-meta">MONTH 5</div></div>
+      <div class="goal-row"><div class="gcheck" onclick="toggleGoal(this)"></div><div class="goal-text">Apply for Spotify monetization</div><div class="goal-meta">ELIGIBLE</div></div>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+      <div class="section-nav-label">NAVIGATE TO</div>
+      <button class="jump-btn current"><span class="j-icon">🏠</span> Home</button>
+      <button class="jump-btn" onclick="switchPage('studio')"><span class="j-icon">🎙️</span> Studio</button>
+      <button class="jump-btn" onclick="switchPage('library')"><span class="j-icon">📚</span> Library</button>
+      <button class="jump-btn" onclick="switchPage('tools')"><span class="j-icon">🛠️</span> Tools</button>
+      <button class="jump-btn" onclick="switchPage('research')"><span class="j-icon">🔍</span> Research</button>
+      <button class="jump-btn" onclick="switchPage('languages')"><span class="j-icon">🌍</span> Languages</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== STUDIO PAGE ===================== -->
+<div class="page" id="page-studio">
+  <div class="page-topbar">
+    <button class="back-btn" onclick="switchPage('home')"><span class="arr">←</span> Back to Home</button>
+    <div class="breadcrumb">WORD CENTER <span class="sep">/</span> <span>STUDIO</span></div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-label">PODCAST STUDIO</span><div class="sec-line"></div></div>
+
+    <!-- WORKFLOW -->
+    <div class="sec-head"><span class="sec-label">YOUR PRODUCTION WORKFLOW</span><div class="sec-line"></div></div>
+    <div class="workflow">
+      <div class="wf-step"><div class="wf-icon">💡</div><div class="wf-title">Topic</div><div class="wf-sub">Your idea</div></div>
+      <div class="wf-step"><div class="wf-icon">📝</div><div class="wf-title">Notes</div><div class="wf-sub">NotePad</div></div>
+      <div class="wf-step"><div class="wf-icon">🤖</div><div class="wf-title">AI Script</div><div class="wf-sub">Claude writes</div></div>
+      <div class="wf-step"><div class="wf-icon">🎤</div><div class="wf-title">Voice</div><div class="wf-sub">ElevenLabs</div></div>
+      <div class="wf-step"><div class="wf-icon">🎧</div><div class="wf-title">Edit</div><div class="wf-sub">Audacity</div></div>
+      <div class="wf-step"><div class="wf-icon">🚀</div><div class="wf-title">Publish</div><div class="wf-sub">Spotify</div></div>
+    </div>
+
+    <!-- AI SCRIPT GENERATOR -->
+    <div class="sec-head"><span class="sec-label">AI SCRIPT GENERATOR & EDITOR</span><div class="sec-line"></div></div>
+    <div class="script-area">
+      <!-- GENERATE CONTROLS -->
+      <div class="gen-controls">
+        <input class="search-input" id="scriptTopic" placeholder="Enter your episode topic..." style="flex:2;">
+        <select class="gen-select" id="scriptTone">
+          <option value="motivational">Motivational</option>
+          <option value="educational">Educational</option>
+          <option value="storytelling">Storytelling</option>
+          <option value="youth">Youth-Focused</option>
+          <option value="inspirational">Inspirational</option>
+        </select>
+        <select class="gen-select" id="scriptLength">
+          <option value="short">Short (3-5 min)</option>
+          <option value="medium">Medium (7-10 min)</option>
+          <option value="long">Long (12-15 min)</option>
+        </select>
+        <button class="gen-btn" id="genBtn" onclick="generateScript()">✦ GENERATE SCRIPT</button>
+      </div>
+
+      <!-- PLACEHOLDER -->
+      <div id="scriptPlaceholder" style="color:var(--muted);font-size:0.82rem;padding:16px 0 8px;">Enter a topic above and click Generate — your full episode script will appear here ready to copy and edit.</div>
+
+      <!-- SCRIPT EDITOR PANEL (hidden until script generated) -->
+      <div id="scriptEditorPanel" style="display:none;">
+
+        <!-- ACTION TOOLBAR -->
+        <div class="script-toolbar">
+          <button class="stool-btn" onclick="copyScript()" title="Copy full script">📋 <span>Copy All</span></button>
+          <button class="stool-btn" onclick="selectAllScript()" title="Select all text">☑️ <span>Select All</span></button>
+          <button class="stool-btn" onclick="clearScript()" title="Clear editor">🗑️ <span>Clear</span></button>
+          <button class="stool-btn" onclick="downloadScript()" title="Download as .txt">⬇️ <span>Download</span></button>
+          <div class="stool-divider"></div>
+          <button class="stool-btn" onclick="addIdea()" title="Add your idea below script">💡 <span>Add Idea</span></button>
+          <button class="stool-btn" onclick="expandSection()" title="AI expands selected section">✦ <span>AI Expand</span></button>
+          <button class="stool-btn" onclick="improveScript()" title="AI improves whole script">⚡ <span>AI Improve</span></button>
+          <div id="charCount" style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--muted);align-self:center;">0 words</div>
+        </div>
+
+        <!-- EDITABLE SCRIPT TEXTAREA -->
+        <textarea
+          id="scriptEditor"
+          class="script-editor"
+          placeholder="Your script will appear here. You can type, edit, paste, or modify freely..."
+          oninput="updateWordCount()"
+          onkeydown="handleEditorKey(event)"
+        ></textarea>
+
+        <!-- IDEAS PANEL -->
+        <div id="ideasPanel" style="display:none;margin-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">💡 YOUR IDEAS & NOTES</div>
+          <textarea
+            id="ideasEditor"
+            class="script-editor"
+            style="min-height:120px;border-color:rgba(232,184,75,0.3);"
+            placeholder="Type your ideas, extra points, personal stories, quotes, or notes to add to the script... These are YOUR additions."
+          ></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+            <button class="gen-btn" style="font-size:0.75rem;padding:8px 16px;" onclick="mergeIdeas()">✦ Merge Ideas into Script</button>
+            <button class="copy-btn" onclick="copyIdeas()">⎘ Copy Ideas</button>
+            <button class="copy-btn" onclick="clearIdeas()">🗑️ Clear Ideas</button>
+          </div>
+        </div>
+
+        <!-- AI EXPAND BOX -->
+        <div id="expandBox" style="display:none;margin-top:12px;background:var(--dark);border:1px solid rgba(232,184,75,0.2);border-radius:10px;padding:14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">✦ AI EXPANSION</div>
+          <div id="expandOutput" style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);line-height:1.9;white-space:pre-wrap;"></div>
+          <div style="display:flex;gap:8px;margin-top:10px;">
+            <button class="gen-btn" style="font-size:0.75rem;padding:8px 16px;" onclick="appendExpansion()">+ Add to Script</button>
+            <button class="copy-btn" onclick="copyExpansion()">⎘ Copy</button>
+            <button class="copy-btn" onclick="document.getElementById('expandBox').style.display='none'">✕ Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TOPIC IDEAS -->
+    <div class="sec-head"><span class="sec-label">NEXT EPISODE IDEAS</span><div class="sec-line"></div></div>
+    <div class="grid2">
+      <div class="topic-item" onclick="useTopicIdea(this,'Why Most People Quit Before Greatness')"><div class="topic-dot" style="background:var(--blue);"></div><div><div class="t-h5">Why Most People Quit Before Greatness</div><div class="t-p">The last mile before breakthrough — why 90% stop right before the finish line</div></div></div>
+      <div class="topic-item" onclick="useTopicIdea(this,'Building Without Resources')"><div class="topic-dot" style="background:var(--gold);"></div><div><div class="t-h5">Building Without Resources</div><div class="t-p">Doing more with less — entrepreneurship from zero</div></div></div>
+      <div class="topic-item" onclick="useTopicIdea(this,'The Generation Nobody Talks About')"><div class="topic-dot" style="background:var(--green);"></div><div><div class="t-h5">The Generation Nobody Talks About</div><div class="t-p">Letters to Gen Z Africa — your challenges, your power</div></div></div>
+      <div class="topic-item" onclick="useTopicIdea(this,'Failure Is Not The End')"><div class="topic-dot" style="background:var(--red);"></div><div><div class="t-h5">Failure Is Not The End</div><div class="t-p">Stories of iconic comebacks — from rock bottom to the top</div></div></div>
+      <div class="topic-item" onclick="useTopicIdea(this,'The Loneliness of Ambition')"><div class="topic-dot" style="background:var(--blue);"></div><div><div class="t-h5">The Loneliness of Ambition</div><div class="t-p">When your vision isolates you — and how to keep going</div></div></div>
+      <div class="topic-item" onclick="useTopicIdea(this,'Discipline Over Motivation')"><div class="topic-dot" style="background:var(--gold);"></div><div><div class="t-h5">Discipline Over Motivation</div><div class="t-p">Why feelings lie but systems don't — build habits that last</div></div></div>
+      <div class="topic-item" onclick="useTopicIdea(this,'The Power of Identity')"><div class="topic-dot" style="background:var(--green);"></div><div><div class="t-h5">The Power of Identity</div><div class="t-p">Who you believe you are determines everything you achieve</div></div></div>
+      <div class="topic-item" onclick="useTopicIdea(this,'Your Worst Day Was Your Best Teacher')"><div class="topic-dot" style="background:var(--red);"></div><div><div class="t-h5">Your Worst Day Was Your Best Teacher</div><div class="t-p">How pain becomes wisdom when you choose to learn from it</div></div></div>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+      <div class="section-nav-label">JUMP TO SECTION</div>
+      <button class="jump-btn current"><span class="j-icon">🎙️</span> Studio</button>
+      <button class="jump-btn" onclick="switchPage('home')"><span class="j-icon">🏠</span> Home</button>
+      <button class="jump-btn" onclick="switchPage('library')"><span class="j-icon">📚</span> Library</button>
+      <button class="jump-btn" onclick="switchPage('tools')"><span class="j-icon">🛠️</span> Tools</button>
+      <button class="jump-btn" onclick="switchPage('research')"><span class="j-icon">🔍</span> Research</button>
+      <button class="jump-btn" onclick="switchPage('languages')"><span class="j-icon">🌍</span> Languages</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== LIBRARY PAGE ===================== -->
+<div class="page" id="page-library">
+  <div class="page-topbar">
+    <button class="back-btn" onclick="switchPage('home')"><span class="arr">←</span> Back to Home</button>
+    <div class="breadcrumb">WORD CENTER <span class="sep">/</span> <span>LIBRARY</span></div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-label">WORD CENTER LIBRARY</span><div class="sec-line"></div></div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:24px;line-height:1.7;">A curated collection of the world's greatest minds in motivation, leadership, science, and self-development. Click any author to explore their full profile and complete book catalogue.</p>
+
+    <!-- FEATURED AUTHORS -->
+    <div class="sec-head"><span class="sec-label">FEATURED AUTHORS</span><div class="sec-line"></div></div>
+    <div class="grid3">
+
+      <div class="author-card" onclick="openAuthor('maxwell')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#1a1000,#3d2800);">👔</div>
+        <div class="author-body">
+          <div class="author-avatar">👔</div>
+          <div class="author-name">John C. Maxwell</div>
+          <div class="author-title">LEADERSHIP AUTHORITY · AUTHOR · SPEAKER</div>
+          <div class="author-bio">The #1 authority on leadership in the world. Maxwell has sold over 35 million books and trained millions of leaders globally.</div>
+          <div class="author-books-count">📖 21+ BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('obama')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#001a30,#003060);">🇺🇸</div>
+        <div class="author-body">
+          <div class="author-avatar">🇺🇸</div>
+          <div class="author-name">Barack Obama</div>
+          <div class="author-title">44TH U.S. PRESIDENT · AUTHOR · ORATOR</div>
+          <div class="author-bio">Nobel Peace Prize laureate, 44th President of the United States, and one of the most powerful voices on hope, change, and leadership.</div>
+          <div class="author-books-count">📖 6 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('carson')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#0a1a0a,#0d3520);">🧠</div>
+        <div class="author-body">
+          <div class="author-avatar">🧠</div>
+          <div class="author-name">Dr. Ben Carson</div>
+          <div class="author-title">NEUROSURGEON · AUTHOR · STATESMAN</div>
+          <div class="author-bio">World-renowned pediatric neurosurgeon who rose from extreme poverty to perform groundbreaking brain surgeries and inspire millions.</div>
+          <div class="author-books-count">📖 8 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('small')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#0d0020,#200040);">🔬</div>
+        <div class="author-body">
+          <div class="author-avatar">🔬</div>
+          <div class="author-name">Dr. Gary Small & Gigi Vorgan</div>
+          <div class="author-title">PSYCHIATRIST · NEUROSCIENTIST · AUTHORS</div>
+          <div class="author-bio">Dr. Gary Small is UCLA's director of the Longevity Center. Together with Gigi Vorgan, they write groundbreaking books on brain health and technology's impact on the mind.</div>
+          <div class="author-books-count">📖 8 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('einstein')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#1a1500,#2e2500);">⚛️</div>
+        <div class="author-body">
+          <div class="author-avatar">⚛️</div>
+          <div class="author-name">Albert Einstein</div>
+          <div class="author-title">PHYSICIST · PHILOSOPHER · GENIUS</div>
+          <div class="author-bio">The greatest scientific mind of the 20th century. His theories of relativity transformed physics forever. A symbol of pure intellectual pursuit.</div>
+          <div class="author-books-count">📖 7 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('covey')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#1a0a00,#3a1500);">🌟</div>
+        <div class="author-body">
+          <div class="author-avatar">🌟</div>
+          <div class="author-name">Stephen R. Covey</div>
+          <div class="author-title">EDUCATOR · AUTHOR · LIFE STRATEGIST</div>
+          <div class="author-bio">Author of one of the best-selling nonfiction books of all time. His work on personal effectiveness has shaped leaders across every industry.</div>
+          <div class="author-books-count">📖 8 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('dyer')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#001515,#002530);">🌊</div>
+        <div class="author-body">
+          <div class="author-avatar">🌊</div>
+          <div class="author-name">Dr. Wayne W. Dyer</div>
+          <div class="author-title">PHILOSOPHER · SELF-HELP PIONEER · SPEAKER</div>
+          <div class="author-bio">Known as the "Father of Motivation," Dr. Dyer's teachings on self-actualization, spiritual awareness, and abundance transformed millions of lives worldwide.</div>
+          <div class="author-books-count">📖 10 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('chopra')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#10001a,#1e0035);">🌌</div>
+        <div class="author-body">
+          <div class="author-avatar">🌌</div>
+          <div class="author-name">Dr. Deepak Chopra</div>
+          <div class="author-title">MD · AUTHOR · WELLNESS PIONEER</div>
+          <div class="author-bio">Harvard-trained physician who merged Western medicine with Eastern philosophy, becoming one of the world's most recognized voices on mind-body wellness.</div>
+          <div class="author-books-count">📖 9 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('sagan')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#000a1a,#001030);">🌠</div>
+        <div class="author-body">
+          <div class="author-avatar">🌠</div>
+          <div class="author-name">Carl Sagan</div>
+          <div class="author-title">ASTROPHYSICIST · AUTHOR · COMMUNICATOR</div>
+          <div class="author-bio">The most influential science communicator of the 20th century. Sagan made the cosmos accessible and sparked curiosity in billions through writing and television.</div>
+          <div class="author-books-count">📖 7 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('mandela')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#1a0505,#3a0f0f);">✊</div>
+        <div class="author-body">
+          <div class="author-avatar">✊</div>
+          <div class="author-name">Nelson Mandela</div>
+          <div class="author-title">REVOLUTIONARY · PRESIDENT · ICON OF FREEDOM</div>
+          <div class="author-bio">Nobel Peace Prize laureate, first Black president of South Africa, and one of the most enduring symbols of justice, sacrifice, and forgiveness in human history.</div>
+          <div class="author-books-count">📖 6 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('hill')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#0f1a00,#1e3300);">💰</div>
+        <div class="author-body">
+          <div class="author-avatar">💰</div>
+          <div class="author-name">Napoleon Hill</div>
+          <div class="author-title">AUTHOR · SUCCESS PHILOSOPHER · ADVISOR</div>
+          <div class="author-bio">Author of the best-selling self-help book of all time, Hill spent 20 years studying the habits of 500 of America's most successful people — including Andrew Carnegie.</div>
+          <div class="author-books-count">📖 7 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('hooks')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#1a001a,#300030);">✍️</div>
+        <div class="author-body">
+          <div class="author-avatar">✍️</div>
+          <div class="author-name">bell hooks</div>
+          <div class="author-title">PROFESSOR · AUTHOR · CULTURAL CRITIC</div>
+          <div class="author-bio">One of the most influential feminist thinkers and cultural critics of her era. Her work on love, race, identity, and education has shaped millions of minds globally.</div>
+          <div class="author-books-count">📖 7 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+      <div class="author-card" onclick="openAuthor('feynman')">
+        <div class="author-banner" style="background:linear-gradient(135deg,#001a10,#003020);">⚡</div>
+        <div class="author-body">
+          <div class="author-avatar">⚡</div>
+          <div class="author-name">Richard P. Feynman</div>
+          <div class="author-title">PHYSICIST · NOBEL LAUREATE · TEACHER</div>
+          <div class="author-bio">Nobel Prize-winning physicist celebrated as much for his extraordinary ability to explain science in simple, thrilling terms as for his groundbreaking contributions to quantum physics.</div>
+          <div class="author-books-count">📖 6 BOOKS IN LIBRARY</div>
+          <button class="view-profile-btn">VIEW FULL PROFILE →</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+      <div class="section-nav-label">JUMP TO SECTION</div>
+      <button class="jump-btn" onclick="switchPage('home')"><span class="j-icon">🏠</span> Home</button>
+      <button class="jump-btn" onclick="switchPage('studio')"><span class="j-icon">🎙️</span> Studio</button>
+      <button class="jump-btn current"><span class="j-icon">📚</span> Library</button>
+      <button class="jump-btn" onclick="switchPage('tools')"><span class="j-icon">🛠️</span> Tools</button>
+      <button class="jump-btn" onclick="switchPage('research')"><span class="j-icon">🔍</span> Research</button>
+      <button class="jump-btn" onclick="switchPage('languages')"><span class="j-icon">🌍</span> Languages</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TOOLS PAGE ===================== -->
+<div class="page" id="page-tools">
+  <div class="page-topbar">
+    <button class="back-btn" onclick="switchPage('home')"><span class="arr">←</span> Back to Home</button>
+    <div class="breadcrumb">WORD CENTER <span class="sep">/</span> <span>TOOLS</span></div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-label">PODCAST TOOLS ARSENAL</span><div class="sec-line"></div></div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:24px;line-height:1.7;">All tools are clickable and open directly. Every tool listed is free or has a generous free tier. Click to open.</p>
+
+    <div class="sec-head"><span class="sec-label">🎤 VOICE & RECORDING</span><div class="sec-line"></div></div>
+    <div class="grid3">
+      <a class="tool-btn" href="https://elevenlabs.io" target="_blank">
+        <div class="tool-icon">🎤</div>
+        <div class="tool-name">ElevenLabs</div>
+        <div class="tool-desc">Clone YOUR voice. Paste script → Get perfect MP3 audio. Best free voice cloner available.</div>
+        <span class="tool-badge badge-fm">FREE 10K CHARS/MO</span>
+      </a>
+      <a class="tool-btn" href="https://www.audacityteam.org" target="_blank">
+        <div class="tool-icon">🎧</div>
+        <div class="tool-name">Audacity</div>
+        <div class="tool-desc">Record, edit, and master your episodes. Noise removal, equalization, export to MP3.</div>
+        <span class="tool-badge badge-free">100% FREE FOREVER</span>
+      </a>
+      <a class="tool-btn" href="https://vocaroo.com" target="_blank">
+        <div class="tool-icon">🎙️</div>
+        <div class="tool-name">Vocaroo</div>
+        <div class="tool-desc">Quick browser recording — no install needed. Record a voice note or quick draft instantly.</div>
+        <span class="tool-badge badge-free">100% FREE</span>
+      </a>
+      <a class="tool-btn" href="https://cleanvoice.ai" target="_blank">
+        <div class="tool-icon">✨</div>
+        <div class="tool-name">Cleanvoice AI</div>
+        <div class="tool-desc">Automatically removes filler words (um, uh), mouth noise, and background sounds.</div>
+        <span class="tool-badge badge-fm">FREE CREDITS</span>
+      </a>
+      <a class="tool-btn" href="https://murf.ai" target="_blank">
+        <div class="tool-icon">🗣️</div>
+        <div class="tool-name">Murf AI</div>
+        <div class="tool-desc">Studio-quality AI voices. Great for narration overlays, intros, and episode trailers.</div>
+        <span class="tool-badge badge-fm">FREE 10 MIN/MO</span>
+      </a>
+      <a class="tool-btn" href="https://www.adobe.com/products/podcast.html" target="_blank">
+        <div class="tool-icon">🔊</div>
+        <div class="tool-name">Adobe Podcast</div>
+        <div class="tool-desc">AI audio enhancer — makes any voice recording sound studio-quality. Free to use.</div>
+        <span class="tool-badge badge-free">FREE</span>
+      </a>
+    </div>
+
+    <div class="sec-head"><span class="sec-label">🚀 PUBLISHING & DISTRIBUTION</span><div class="sec-line"></div></div>
+    <div class="grid3">
+      <a class="tool-btn" href="https://creators.spotify.com" target="_blank">
+        <div class="tool-icon">💚</div>
+        <div class="tool-name">Spotify for Creators</div>
+        <div class="tool-desc">Your home base. Publish to Spotify, view analytics, manage episodes. You're already here ✅</div>
+        <span class="tool-badge badge-free">ACTIVE ✅</span>
+      </a>
+      <a class="tool-btn" href="https://www.buzzsprout.com" target="_blank">
+        <div class="tool-icon">📡</div>
+        <div class="tool-name">Buzzsprout</div>
+        <div class="tool-desc">Distributes your podcast to Apple, Google, Amazon, Spotify all at once. Powerful free tier.</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+      <a class="tool-btn" href="https://www.podbean.com" target="_blank">
+        <div class="tool-icon">🫘</div>
+        <div class="tool-name">Podbean</div>
+        <div class="tool-desc">Free hosting + multi-platform distribution. Has built-in monetization and audience tools.</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+    </div>
+
+    <div class="sec-head"><span class="sec-label">🎨 DESIGN & GRAPHICS</span><div class="sec-line"></div></div>
+    <div class="grid3">
+      <a class="tool-btn" href="https://www.canva.com" target="_blank">
+        <div class="tool-icon">🎨</div>
+        <div class="tool-name">Canva</div>
+        <div class="tool-desc">Episode cover art, social media posts, promo graphics, YouTube thumbnails. You know this one!</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+      <a class="tool-btn" href="https://www.adobe.com/express" target="_blank">
+        <div class="tool-icon">✦</div>
+        <div class="tool-name">Adobe Express</div>
+        <div class="tool-desc">Quick professional graphics for social promo, episode artwork, and brand materials.</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+      <a class="tool-btn" href="https://pixabay.com/music/" target="_blank">
+        <div class="tool-icon">🎵</div>
+        <div class="tool-name">Pixabay Music</div>
+        <div class="tool-desc">100% royalty-free music for intros, outros, and background. No copyright claims ever.</div>
+        <span class="tool-badge badge-free">100% FREE</span>
+      </a>
+    </div>
+
+    <div class="sec-head"><span class="sec-label">🤖 AI & WRITING</span><div class="sec-line"></div></div>
+    <div class="grid3">
+      <a class="tool-btn" href="https://claude.ai" target="_blank">
+        <div class="tool-icon">🤖</div>
+        <div class="tool-name">Claude AI</div>
+        <div class="tool-desc">Script writing, topic expansion, show notes, episode titles, research — your AI co-producer.</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+      <a class="tool-btn" href="https://chat.openai.com" target="_blank">
+        <div class="tool-icon">🧠</div>
+        <div class="tool-name">ChatGPT</div>
+        <div class="tool-desc">Alternative AI for brainstorming, outlines, and script drafting. Good backup to Claude.</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+      <a class="tool-btn" href="https://otter.ai" target="_blank">
+        <div class="tool-icon">📋</div>
+        <div class="tool-name">Otter.ai</div>
+        <div class="tool-desc">Transcribes your recordings to text automatically. Create show notes and quotes easily.</div>
+        <span class="tool-badge badge-fm">FREE 600 MIN/MO</span>
+      </a>
+    </div>
+
+    <div class="sec-head"><span class="sec-label">📊 GROWTH & ANALYTICS</span><div class="sec-line"></div></div>
+    <div class="grid3">
+      <a class="tool-btn" href="https://chartable.com" target="_blank">
+        <div class="tool-icon">📈</div>
+        <div class="tool-name">Chartable</div>
+        <div class="tool-desc">Track your podcast rankings, growth analytics, and listener demographics across platforms.</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+      <a class="tool-btn" href="https://podchaser.com" target="_blank">
+        <div class="tool-icon">🌐</div>
+        <div class="tool-name">Podchaser</div>
+        <div class="tool-desc">Podcast database + community. Get your show listed and discovered by new listeners.</div>
+        <span class="tool-badge badge-free">FREE</span>
+      </a>
+      <a class="tool-btn" href="https://www.headliner.app" target="_blank">
+        <div class="tool-icon">🎬</div>
+        <div class="tool-name">Headliner</div>
+        <div class="tool-desc">Turn audio clips into shareable video content for TikTok, Instagram, and Twitter promotion.</div>
+        <span class="tool-badge badge-fm">FREE TIER</span>
+      </a>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+      <div class="section-nav-label">JUMP TO SECTION</div>
+      <button class="jump-btn" onclick="switchPage('home')"><span class="j-icon">🏠</span> Home</button>
+      <button class="jump-btn" onclick="switchPage('studio')"><span class="j-icon">🎙️</span> Studio</button>
+      <button class="jump-btn" onclick="switchPage('library')"><span class="j-icon">📚</span> Library</button>
+      <button class="jump-btn current"><span class="j-icon">🛠️</span> Tools</button>
+      <button class="jump-btn" onclick="switchPage('research')"><span class="j-icon">🔍</span> Research</button>
+      <button class="jump-btn" onclick="switchPage('languages')"><span class="j-icon">🌍</span> Languages</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== RESEARCH PAGE ===================== -->
+<div class="page" id="page-research">
+  <div class="page-topbar">
+    <button class="back-btn" onclick="switchPage('home')"><span class="arr">←</span> Back to Home</button>
+    <div class="breadcrumb">WORD CENTER <span class="sep">/</span> <span>RESEARCH</span></div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-label">RESEARCH CENTER</span><div class="sec-line"></div></div>
+
+    <!-- DICTIONARY -->
+    <div class="sec-head"><span class="sec-label">📖 LIVE DICTIONARY</span><div class="sec-line"></div></div>
+    <div class="search-bar">
+      <input class="search-input" id="dictInput" placeholder="Type any word to look it up..." onkeydown="if(event.key==='Enter')lookupWord()">
+      <button class="search-btn" onclick="lookupWord()">DEFINE</button>
+    </div>
+    <div class="dict-result" id="dictResult"></div>
+
+    <!-- WIKIPEDIA -->
+    <div class="sec-head" style="margin-top:28px;"><span class="sec-label">🌐 WIKIPEDIA SEARCH</span><div class="sec-line"></div></div>
+    <div class="search-bar">
+      <input class="search-input" id="wikiInput" placeholder="Search Wikipedia for any topic..." onkeydown="if(event.key==='Enter')searchWiki()">
+      <button class="search-btn" onclick="searchWiki()">SEARCH</button>
+    </div>
+    <div class="wiki-result" id="wikiResult"></div>
+
+    <!-- REFERENCE LINKS -->
+    <div class="sec-head" style="margin-top:28px;"><span class="sec-label">REFERENCE & KNOWLEDGE SITES</span><div class="sec-line"></div></div>
+    <div class="ref-grid">
+      <a class="ref-card" href="https://www.dictionary.com" target="_blank"><div class="ref-icon">📖</div><div><div class="ref-name">Dictionary.com</div><div class="ref-sub">Full English dictionary</div></div></a>
+      <a class="ref-card" href="https://www.merriam-webster.com" target="_blank"><div class="ref-icon">📚</div><div><div class="ref-name">Merriam-Webster</div><div class="ref-sub">America's #1 dictionary</div></div></a>
+      <a class="ref-card" href="https://www.thesaurus.com" target="_blank"><div class="ref-icon">🔤</div><div><div class="ref-name">Thesaurus</div><div class="ref-sub">Synonyms & antonyms</div></div></a>
+      <a class="ref-card" href="https://en.wikipedia.org" target="_blank"><div class="ref-icon">🌐</div><div><div class="ref-name">Wikipedia</div><div class="ref-sub">Free encyclopedia</div></div></a>
+      <a class="ref-card" href="https://www.britannica.com" target="_blank"><div class="ref-icon">🏛️</div><div><div class="ref-name">Britannica</div><div class="ref-sub">Encyclopaedia Britannica</div></div></a>
+      <a class="ref-card" href="https://scholar.google.com" target="_blank"><div class="ref-icon">🎓</div><div><div class="ref-name">Google Scholar</div><div class="ref-sub">Academic research papers</div></div></a>
+      <a class="ref-card" href="https://www.goodreads.com" target="_blank"><div class="ref-icon">📕</div><div><div class="ref-name">Goodreads</div><div class="ref-sub">Book reviews & ratings</div></div></a>
+      <a class="ref-card" href="https://www.ted.com/talks" target="_blank"><div class="ref-icon">💡</div><div><div class="ref-name">TED Talks</div><div class="ref-sub">Ideas worth spreading</div></div></a>
+      <a class="ref-card" href="https://archive.org" target="_blank"><div class="ref-icon">🗄️</div><div><div class="ref-name">Internet Archive</div><div class="ref-sub">Books, audio & web archive</div></div></a>
+      <a class="ref-card" href="https://www.gutenberg.org" target="_blank"><div class="ref-icon">📜</div><div><div class="ref-name">Project Gutenberg</div><div class="ref-sub">60,000+ free books</div></div></a>
+      <a class="ref-card" href="https://www.sciencedaily.com" target="_blank"><div class="ref-icon">🔬</div><div><div class="ref-name">Science Daily</div><div class="ref-sub">Latest science news</div></div></a>
+      <a class="ref-card" href="https://www.psychologytoday.com" target="_blank"><div class="ref-icon">🧠</div><div><div class="ref-name">Psychology Today</div><div class="ref-sub">Mind & behavior insights</div></div></a>
+    </div>
+
+    <!-- QUOTE FINDER -->
+    <div class="sec-head"><span class="sec-label">💬 QUOTE GENERATOR</span><div class="sec-line"></div></div>
+    <div class="search-bar">
+      <input class="search-input" id="quoteInput" placeholder="Enter a theme: e.g. resilience, leadership, sacrifice..." onkeydown="if(event.key==='Enter')getQuote()">
+      <button class="search-btn" onclick="getQuote()">GET QUOTE</button>
+    </div>
+    <div id="quoteResult" style="display:none;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:16px;">
+      <div id="quoteText" style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:#fff;line-height:1.6;margin-bottom:12px;"></div>
+      <div id="quoteAuthor" style="font-size:0.8rem;color:var(--gold);font-weight:600;letter-spacing:1px;"></div>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+      <div class="section-nav-label">JUMP TO SECTION</div>
+      <button class="jump-btn" onclick="switchPage('home')"><span class="j-icon">🏠</span> Home</button>
+      <button class="jump-btn" onclick="switchPage('studio')"><span class="j-icon">🎙️</span> Studio</button>
+      <button class="jump-btn" onclick="switchPage('library')"><span class="j-icon">📚</span> Library</button>
+      <button class="jump-btn" onclick="switchPage('tools')"><span class="j-icon">🛠️</span> Tools</button>
+      <button class="jump-btn current"><span class="j-icon">🔍</span> Research</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer" id="main-footer">
+  <strong>WORD CENTER</strong> · Founded by Adesina Israel · @2026 · Visual EAZE Studios · Lagos, Nigeria
+</div>
+
+<!-- ===================== LANGUAGES PAGE ===================== -->
+<div class="page" id="page-languages">
+  <div class="page-topbar">
+    <button class="back-btn" onclick="switchPage('home')"><span class="arr">←</span> Back to Home</button>
+    <div class="breadcrumb">WORD CENTER <span class="sep">/</span> <span>LANGUAGES</span></div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-label">🌍 MULTI-LANGUAGE PODCAST STUDIO</span><div class="sec-line"></div></div>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:24px;line-height:1.8;">Reach the whole world. Generate podcast scripts in 5 languages using AI, then translate any text instantly. Every language comes with voice tool recommendations so you can record and publish in that language.</p>
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="sec-head"><span class="sec-label">🎙️ AI SCRIPT IN ANY LANGUAGE</span><div class="sec-line"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px;" class="lang-grid">
+      <button class="lang-pill" onclick="selectLang('en','🇬🇧','English')" id="lang-en">🇬🇧<br><span>English</span></button>
+      <button class="lang-pill" onclick="selectLang('es','🇪🇸','Spanish')" id="lang-es">🇪🇸<br><span>Español</span></button>
+      <button class="lang-pill" onclick="selectLang('fr','🇫🇷','French')" id="lang-fr">🇫🇷<br><span>Français</span></button>
+      <button class="lang-pill" onclick="selectLang('de','🇩🇪','German')" id="lang-de">🇩🇪<br><span>Deutsch</span></button>
+      <button class="lang-pill" onclick="selectLang('zh','🇨🇳','Chinese')" id="lang-zh">🇨🇳<br><span>中文</span></button>
+    </div>
+
+    <div id="langScriptBox" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:28px;">
+      <div id="langSelectedInfo" style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <span id="langFlag" style="font-size:1.8rem;">🇬🇧</span>
+        <div>
+          <div id="langName" style="font-weight:700;font-size:0.95rem;">English</div>
+          <div style="font-size:0.72rem;color:var(--muted);">Selected language for AI script generation</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+        <input class="search-input" id="langTopic" placeholder="Enter topic for your episode..." style="flex:2;">
+        <button class="gen-btn" id="langGenBtn" onclick="generateLangScript()">✦ GENERATE IN <span id="langBtnLabel">ENGLISH</span></button>
+        <button class="copy-btn" id="langCopyBtn" onclick="copyLangScript()" style="display:none;">⎘ COPY</button>
+      </div>
+      <div id="langPlaceholder" style="color:var(--muted);font-size:0.82rem;padding:10px 0;">Choose a language above, enter a topic, and generate a full podcast script in that language.</div>
+      <div id="langOutput" style="background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:16px;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);line-height:1.9;white-space:pre-wrap;display:none;"></div>
+    </div>
+
+    <!-- TRANSLATOR -->
+    <div class="sec-head"><span class="sec-label">🔄 INSTANT TRANSLATOR</span><div class="sec-line"></div></div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:28px;">
+      <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center;">
+        <select class="gen-select" id="transFrom" style="flex:1;min-width:130px;">
+          <option value="English">🇬🇧 English</option>
+          <option value="Spanish">🇪🇸 Spanish</option>
+          <option value="French">🇫🇷 French</option>
+          <option value="German">🇩🇪 German</option>
+          <option value="Chinese">🇨🇳 Chinese</option>
+          <option value="Yoruba">🇳🇬 Yoruba</option>
+          <option value="Hausa">🇳🇬 Hausa</option>
+          <option value="Igbo">🇳🇬 Igbo</option>
+          <option value="Portuguese">🇧🇷 Portuguese</option>
+          <option value="Arabic">🇸🇦 Arabic</option>
+        </select>
+        <div style="color:var(--gold);font-size:1.2rem;font-weight:700;">→</div>
+        <select class="gen-select" id="transTo" style="flex:1;min-width:130px;">
+          <option value="Spanish">🇪🇸 Spanish</option>
+          <option value="English">🇬🇧 English</option>
+          <option value="French">🇫🇷 French</option>
+          <option value="German">🇩🇪 German</option>
+          <option value="Chinese">🇨🇳 Chinese</option>
+          <option value="Yoruba">🇳🇬 Yoruba</option>
+          <option value="Hausa">🇳🇬 Hausa</option>
+          <option value="Igbo">🇳🇬 Igbo</option>
+          <option value="Portuguese">🇧🇷 Portuguese</option>
+          <option value="Arabic">🇸🇦 Arabic</option>
+        </select>
+        <button class="gen-btn" onclick="translateText()">🔄 TRANSLATE</button>
+        <button class="copy-btn" id="transCopyBtn" onclick="copyTrans()" style="display:none;">⎘ COPY</button>
+      </div>
+      <textarea id="transInput" placeholder="Paste your script, sentence, or any text here to translate..." style="width:100%;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:14px;color:var(--text);font-family:'Syne',sans-serif;font-size:0.83rem;line-height:1.7;outline:none;resize:vertical;min-height:100px;" onkeydown="if(event.ctrlKey&&event.key==='Enter')translateText()"></textarea>
+      <div id="transOutput" style="margin-top:12px;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:16px;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);line-height:1.9;display:none;white-space:pre-wrap;"></div>
+      <div style="font-size:0.68rem;color:var(--muted2);margin-top:8px;">Tip: Press Ctrl+Enter to translate quickly. Works on scripts, titles, show notes and any text.</div>
+    </div>
+
+    <!-- LANGUAGE VOICE TOOLS -->
+    <div class="sec-head"><span class="sec-label">🎤 VOICE TOOLS BY LANGUAGE</span><div class="sec-line"></div></div>
+    <div class="grid2">
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🇬🇧 🇺🇸</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">English</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">The global language of podcasting. Largest audience, most tools available.</div>
+        <a href="https://elevenlabs.io" target="_blank" class="jump-btn" style="display:block;text-align:center;margin-bottom:6px;text-decoration:none;">🎤 ElevenLabs — Clone Voice</a>
+        <a href="https://murf.ai" target="_blank" class="jump-btn" style="display:block;text-align:center;text-decoration:none;">🗣️ Murf AI — English Voices</a>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🇪🇸 🇲🇽 🇦🇷</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">Spanish — Español</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">500M+ speakers. Second most spoken language. Huge untapped podcast audience in Latin America.</div>
+        <a href="https://elevenlabs.io" target="_blank" class="jump-btn" style="display:block;text-align:center;margin-bottom:6px;text-decoration:none;">🎤 ElevenLabs — Spanish Voices</a>
+        <a href="https://www.naturalreaders.com" target="_blank" class="jump-btn" style="display:block;text-align:center;text-decoration:none;">🔊 NaturalReader — Spanish TTS</a>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🇫🇷 🇨🇩 🇸🇳</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">French — Français</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">300M+ speakers. Huge in West and Central Africa — Nigeria's neighbors speak French. Major opportunity for African podcasters.</div>
+        <a href="https://elevenlabs.io" target="_blank" class="jump-btn" style="display:block;text-align:center;margin-bottom:6px;text-decoration:none;">🎤 ElevenLabs — French Voices</a>
+        <a href="https://ttsreader.com" target="_blank" class="jump-btn" style="display:block;text-align:center;text-decoration:none;">🔊 TTSReader — French Audio</a>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🇩🇪 🇦🇹 🇨🇭</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">German — Deutsch</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">100M+ speakers. Germany has the most podcast listeners per capita in Europe. A high-value, educated audience.</div>
+        <a href="https://elevenlabs.io" target="_blank" class="jump-btn" style="display:block;text-align:center;margin-bottom:6px;text-decoration:none;">🎤 ElevenLabs — German Voices</a>
+        <a href="https://speechify.com" target="_blank" class="jump-btn" style="display:block;text-align:center;text-decoration:none;">🔊 Speechify — German TTS</a>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🇨🇳 🇹🇼 🇸🇬</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">Chinese — 中文</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">1.4 billion speakers. The Chinese podcast market is growing fast. Reaching this audience makes you a truly global voice.</div>
+        <a href="https://elevenlabs.io" target="_blank" class="jump-btn" style="display:block;text-align:center;margin-bottom:6px;text-decoration:none;">🎤 ElevenLabs — Chinese Voices</a>
+        <a href="https://www.naturalreaders.com" target="_blank" class="jump-btn" style="display:block;text-align:center;text-decoration:none;">🔊 NaturalReader — Mandarin TTS</a>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">🇳🇬 🌍</div>
+        <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">Nigerian Languages</div>
+        <div style="font-size:0.75rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">Yoruba, Hausa & Igbo. Reach your home audience on a deep level. Podcast in your mother tongue and build a local empire first.</div>
+        <a href="https://translate.google.com" target="_blank" class="jump-btn" style="display:block;text-align:center;margin-bottom:6px;text-decoration:none;">🌐 Google Translate — Yoruba/Igbo/Hausa</a>
+        <a href="https://elevenlabs.io" target="_blank" class="jump-btn" style="display:block;text-align:center;text-decoration:none;">🎤 ElevenLabs — African Voices</a>
+      </div>
+
+    </div>
+
+    <!-- FREE TRANSLATOR TOOLS -->
+    <div class="sec-head"><span class="sec-label">🔗 FREE TRANSLATOR TOOLS</span><div class="sec-line"></div></div>
+    <div class="ref-grid">
+      <a class="ref-card" href="https://translate.google.com" target="_blank"><div class="ref-icon">🌐</div><div><div class="ref-name">Google Translate</div><div class="ref-sub">133 languages · Free</div></div></a>
+      <a class="ref-card" href="https://www.deepl.com/translator" target="_blank"><div class="ref-icon">🔵</div><div><div class="ref-name">DeepL Translator</div><div class="ref-sub">Best quality AI translation</div></div></a>
+      <a class="ref-card" href="https://www.bing.com/translator" target="_blank"><div class="ref-icon">🔷</div><div><div class="ref-name">Bing Translator</div><div class="ref-sub">Microsoft · 70+ languages</div></div></a>
+      <a class="ref-card" href="https://translate.yandex.com" target="_blank"><div class="ref-icon">🟡</div><div><div class="ref-name">Yandex Translate</div><div class="ref-sub">Strong for Slavic languages</div></div></a>
+      <a class="ref-card" href="https://www.reverso.net/text-translation" target="_blank"><div class="ref-icon">🔄</div><div><div class="ref-name">Reverso</div><div class="ref-sub">Context-aware translation</div></div></a>
+      <a class="ref-card" href="https://papago.naver.com" target="_blank"><div class="ref-icon">🟢</div><div><div class="ref-name">Papago (Naver)</div><div class="ref-sub">Best for Asian languages</div></div></a>
+    </div>
+
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+      <div class="section-nav-label">JUMP TO SECTION</div>
+      <button class="jump-btn" onclick="switchPage('home')"><span class="j-icon">🏠</span> Home</button>
+      <button class="jump-btn" onclick="switchPage('studio')"><span class="j-icon">🎙️</span> Studio</button>
+      <button class="jump-btn" onclick="switchPage('library')"><span class="j-icon">📚</span> Library</button>
+      <button class="jump-btn" onclick="switchPage('tools')"><span class="j-icon">🛠️</span> Tools</button>
+      <button class="jump-btn" onclick="switchPage('research')"><span class="j-icon">🔍</span> Research</button>
+      <button class="jump-btn current"><span class="j-icon">🌍</span> Languages</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+// ---- NAVIGATION ----
+function switchPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const tabs = document.querySelectorAll('.nav-tab');
+  const map = {home:0,studio:1,library:2,tools:3,research:4,languages:5};
+  if(map[id] !== undefined) tabs[map[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ---- TOAST ----
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ---- GOAL TOGGLE ----
+function toggleGoal(btn) {
+  btn.classList.toggle('done');
+  const txt = btn.nextElementSibling;
+  if(btn.classList.contains('done')) { btn.textContent = '✓'; txt.classList.add('x'); toast('Goal marked complete! 🎯'); }
+  else { btn.textContent = ''; txt.classList.remove('x'); }
+}
+
+// ---- EPISODE MODAL ----
+function openEpModal(num, title, dur, plays, desc) {
+  const c = document.getElementById('modalContent');
+  c.innerHTML = `
+    <div class="modal-head">
+      <div class="modal-avatar" style="font-size:1.5rem;">👑</div>
+      <div class="modal-title-area">
+        <div class="modal-name">Episode ${num}: ${title}</div>
+        <div class="modal-role">Heavy Crowns Podcast · ${dur} · ${plays} Plays</div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-bio">${desc}</div>
+      <div class="modal-section-title">LISTEN NOW</div>
+      <a href="https://creators.spotify.com" target="_blank" style="display:flex;align-items:center;gap:10px;background:rgba(30,215,96,0.08);border:1px solid rgba(30,215,96,0.2);border-radius:10px;padding:14px;text-decoration:none;color:#1ed760;font-weight:700;font-size:0.88rem;">
+        💚 Open on Spotify for Creators
+      </a>
+    </div>`;
+  document.getElementById('authorModal').classList.add('open');
+}
+
+// ---- AUTHOR DATA ----
+const authorData = {
+  maxwell: {
+    emoji: '👔', name: 'John C. Maxwell', role: 'Leadership Authority · Pastor · Author · Speaker',
+    bio: 'John C. Maxwell is recognized as the #1 leadership authority in the world by the American Management Association. He has sold over 35 million books in 50 languages. Maxwell founded the EQUIP Leadership and the John Maxwell Company, training more than 6 million leaders globally each year. His life work answers one question: How can I add value to people?',
+    books: [
+      {t:'The 21 Irrefutable Laws of Leadership',y:'1998',d:'The definitive guide to leadership. 21 laws every leader must master.'},
+      {t:'Developing the Leader Within You',y:'1993',d:'Maxwell\'s first and most foundational leadership book.'},
+      {t:'The 21 Indispensable Qualities of a Leader',y:'1999',d:'The character traits that make a great leader.'},
+      {t:'Failing Forward',y:'2000',d:'Turning mistakes into stepping stones for success.'},
+      {t:'The 17 Indisputable Laws of Teamwork',y:'2001',d:'How to build and sustain high-performance teams.'},
+      {t:'Thinking for a Change',y:'2003',d:'11 ways highly successful people approach life differently.'},
+      {t:'The 360 Degree Leader',y:'2005',d:'Developing your influence from anywhere in the organization.'},
+      {t:'Talent is Never Enough',y:'2007',d:'13 choices to maximize your talent beyond natural ability.'},
+      {t:'Put Your Dream to the Test',y:'2009',d:'10 questions to help you see it and seize it.'},
+      {t:'Everyone Communicates, Few Connect',y:'2010',d:'What the most effective people do differently.'},
+      {t:'The 5 Levels of Leadership',y:'2011',d:'Proven steps to maximize your potential as a leader.'},
+      {t:'Sometimes You Win, Sometimes You Learn',y:'2013',d:'Life\'s greatest lessons come from losses.'},
+      {t:'Good Leaders Ask Great Questions',y:'2014',d:'Your foundation for successful leadership.'},
+      {t:'Intentional Living',y:'2015',d:'Choosing a life that matters.'},
+      {t:'No Limits',y:'2017',d:'Blow the cap off your capacity.'},
+      {t:'Leadershift',y:'2019',d:'The 11 essential changes every leader must embrace.'},
+      {t:'The Leader\'s Greatest Return',y:'2020',d:'Attracting, developing and multiplying leaders.'},
+      {t:'Change Your World',y:'2021',d:'How anyone, anywhere can make a difference.'},
+      {t:'High Road Leadership',y:'2024',d:'Bringing people together in a world that divides.'},
+    ]
+  },
+  obama: {
+    emoji: '🇺🇸', name: 'Barack Obama', role: '44th U.S. President · Nobel Peace Prize · Author',
+    bio: 'Barack Obama served as the 44th President of the United States from 2009 to 2017, becoming the first African American to hold the office. A Harvard Law graduate, constitutional law professor, and Nobel Peace Prize laureate, Obama\'s writings span memoir, political philosophy, and reflections on democracy, hope, and change. His words continue to inspire billions across the world.',
+    books: [
+      {t:'Dreams from My Father',y:'1995',d:'A story of race, inheritance, and identity — Obama\'s journey of self-discovery.'},
+      {t:'The Audacity of Hope',y:'2006',d:'Thoughts on reclaiming the American dream. His vision for the nation.'},
+      {t:'Of Thee I Sing: A Letter to My Daughters',y:'2010',d:'A children\'s book celebrating the traits that make America great.'},
+      {t:'A Promised Land',y:'2020',d:'Volume 1 of his presidential memoirs — inside the White House.'},
+      {t:'Renegades: Born in the USA',y:'2021',d:'Conversations with Bruce Springsteen on music, race, and America.'},
+      {t:'The Light We Carry',y:'2022',d:'A deeply personal book by Michelle Obama — Barack wrote the foreword.'},
+    ]
+  },
+  carson: {
+    emoji: '🧠', name: 'Dr. Ben Carson', role: 'World-Renowned Neurosurgeon · Author · Statesman',
+    bio: 'Dr. Benjamin Solomon Carson Sr. grew up in extreme poverty in Detroit, raised by a single mother who could barely read. He became one of the world\'s most celebrated neurosurgeons, directing pediatric neurosurgery at Johns Hopkins for 29 years. He performed the first successful separation of conjoined twins joined at the back of the head. His story is one of the most powerful demonstrations of what determination and faith can achieve.',
+    books: [
+      {t:'Gifted Hands',y:'1990',d:'The autobiography that inspired a generation — from poverty to neurosurgery.'},
+      {t:'Think Big',y:'1992',d:'Unleashing your potential for excellence. The THINK BIG acronym.'},
+      {t:'The Big Picture',y:'1999',d:'Getting perspective on what really matters in life.'},
+      {t:'Take the Risk',y:'2008',d:'Learning to identify, choose, and live with acceptable risk.'},
+      {t:'Gifted Hands — The Ben Carson Story (Youth)',y:'2011',d:'Adapted for young readers — same powerful story, new generation.'},
+      {t:'America the Beautiful',y:'2012',d:'Rediscovering what made this nation great.'},
+      {t:'One Nation',y:'2014',d:'What we can all do to save America\'s future.'},
+      {t:'You Have a Brain',y:'2015',d:'A Teen\'s Guide to T.H.I.N.K. B.I.G. — for the next generation.'},
+    ]
+  },
+  small: {
+    emoji: '🔬', name: 'Dr. Gary Small & Gigi Vorgan', role: 'Psychiatrist · Neuroscientist · Authors',
+    bio: 'Dr. Gary Small is a professor of psychiatry and director of the UCLA Longevity Center — one of the world\'s foremost experts on brain health, aging, memory, and technology\'s impact on the human mind. Together with his wife Gigi Vorgan, a writer and actress, they have co-authored multiple groundbreaking books bridging science and accessible wisdom for everyday readers.',
+    books: [
+      {t:'The Memory Bible',y:'2002',d:'An innovative strategy for keeping your brain young.'},
+      {t:'The Longevity Bible',y:'2006',d:'8 essential strategies for keeping your mind sharp and your body young.'},
+      {t:'iBrain',y:'2008',d:'Surviving the technological alteration of the modern mind.'},
+      {t:'The Memory Prescription',y:'2004',d:'Dr. Small\'s 14-day plan to keep your brain and body young.'},
+      {t:'2 Weeks to a Younger Brain',y:'2015',d:'An innovative program for a better memory and sharper mind.'},
+      {t:'Snap! Change Your Personality',y:'2019',d:'How to use new science breakthroughs to reshape your identity.'},
+      {t:'The Naked Lady Who Stood on Her Head',y:'2010',d:'A psychiatrist\'s stories of his most bizarre cases.'},
+      {t:'Brain & Trust',y:'2021',d:'The neuroscience of trust in relationships and leadership.'},
+    ]
+  },
+  einstein: {
+    emoji: '⚛️', name: 'Albert Einstein', role: 'Theoretical Physicist · Nobel Laureate 1921 · Philosopher',
+    bio: 'Albert Einstein (1879–1955) was a German-born theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics. His famous equation E=mc² fundamentally altered human understanding of energy and matter. Beyond physics, Einstein was a humanitarian, pacifist, and philosopher who wrote extensively on education, peace, God, and the human condition. He remains the most recognized scientist in history.',
+    books: [
+      {t:'Relativity: The Special and General Theory',y:'1916',d:'Einstein explains his own theory in plain language for general readers.'},
+      {t:'The World as I See It',y:'1934',d:'Essays on life, politics, God, and what it means to be human.'},
+      {t:'Out of My Later Years',y:'1950',d:'Collected essays, letters and reflections from his mature years.'},
+      {t:'Ideas and Opinions',y:'1954',d:'The definitive collection of Einstein\'s writings on science and life.'},
+      {t:'The Evolution of Physics',y:'1938',d:'Co-written with Leopold Infeld — the growth of ideas from early concepts to relativity.'},
+      {t:'Einstein on Cosmic Religion',y:'1931',d:'Reflections on science, ethics, and the nature of the universe.'},
+      {t:'Autobiographical Notes',y:'1949',d:'Einstein\'s own account of his intellectual development — rare and personal.'},
+    ]
+  },
+  covey: {
+    emoji: '🌟', name: 'Stephen R. Covey', role: 'Educator · Leadership Consultant · Author',
+    bio: 'Stephen R. Covey (1932–2012) was an educator, author, businessman, and keynote speaker. His book "The 7 Habits of Highly Effective People" has sold over 40 million copies worldwide and was named the #1 Most Influential Business Book of the 20th Century. Covey spent his life teaching that true effectiveness comes from character, not personality, and that principle-centered leadership is the foundation of all lasting success.',
+    books: [
+      {t:'The 7 Habits of Highly Effective People',y:'1989',d:'The #1 Most Influential Business Book of the 20th Century. Timeless principles.'},
+      {t:'Principle-Centered Leadership',y:'1990',d:'Strategies for personal and professional effectiveness.'},
+      {t:'First Things First',y:'1994',d:'A time management classic — do what matters most.'},
+      {t:'The 7 Habits of Highly Effective Families',y:'1997',d:'Building a beautiful family culture one habit at a time.'},
+      {t:'The 8th Habit',y:'2004',d:'From effectiveness to greatness — finding your voice and inspiring others.'},
+      {t:'The Leader in Me',y:'2008',d:'How schools around the world are inspiring greatness, one child at a time.'},
+      {t:'Smart Trust',y:'2012',d:'Creating prosperity, energy, and joy in a low-trust world.'},
+      {t:'The 3rd Alternative',y:'2011',d:'Solving life\'s most difficult problems by going beyond compromise.'},
+    ]
+  },
+  dyer: {
+    emoji: '🌊', name: 'Dr. Wayne W. Dyer', role: 'Author · Speaker · Philosopher · Self-Help Pioneer',
+    bio: 'Dr. Wayne W. Dyer (1940–2015) was an internationally renowned author and speaker in the fields of self-development and spiritual growth. Known as the "Father of Motivation," he overcame an abusive childhood in orphanages to earn a doctorate in counseling psychology and become one of the best-selling authors in history. His message was simple: you have within you the power to create the life you desire.',
+    books: [
+      {t:'Your Erroneous Zones',y:'1976',d:'The book that launched his career — the #2 best-selling book of all time at publication.'},
+      {t:'Pulling Your Own Strings',y:'1977',d:'Dynamic techniques for dealing with other people.'},
+      {t:'The Sky\'s the Limit',y:'1980',d:'Breaking out of the ordinary — reaching your fullest potential.'},
+      {t:'Gifts from Eykis',y:'1983',d:'A novel exploring limitless living through a visitor from another universe.'},
+      {t:'You\'ll See It When You Believe It',y:'1989',d:'The way to your personal transformation.'},
+      {t:'Real Magic',y:'1992',d:'Creating miracles in everyday life.'},
+      {t:'The Power of Intention',y:'2004',d:'Learning to co-create your world your way — his masterpiece.'},
+      {t:'Inspiration',y:'2006',d:'Your ultimate calling — living an inspired life.'},
+      {t:'Change Your Thoughts, Change Your Life',y:'2007',d:'Living the wisdom of the Tao — 81 ancient principles for modern life.'},
+      {t:'Excuses Begone!',y:'2009',d:'How to change lifelong, self-defeating thinking habits.'},
+    ]
+  },
+  chopra: {
+    emoji: '🌌', name: 'Dr. Deepak Chopra', role: 'MD · Author · Wellness Pioneer · Spiritual Teacher',
+    bio: 'Dr. Deepak Chopra is a Harvard-trained physician, founder of the Chopra Center for Wellbeing, and one of the most prolific authors on mind-body medicine. He has bridged Western science with Eastern philosophy to create a new paradigm of total wellness. A TIME Magazine "Top 100 Icons and Heroes of the Century," Chopra has written over 90 books that have transformed how millions understand consciousness, health, and reality.',
+    books: [
+      {t:'Perfect Health',y:'1990',d:'The complete mind/body guide using Ayurvedic principles.'},
+      {t:'Ageless Body, Timeless Mind',y:'1993',d:'The quantum alternative to growing old.'},
+      {t:'The Seven Spiritual Laws of Success',y:'1994',d:'A practical guide to the fulfillment of your dreams. His most famous work.'},
+      {t:'The Path to Love',y:'1997',d:'Spiritual strategies for healing — renewing the power of love.'},
+      {t:'How to Know God',y:'2000',d:'The soul\'s journey into the mystery of mysteries.'},
+      {t:'The Spontaneous Fulfillment of Desire',y:'2003',d:'Harnessing the infinite power of coincidence.'},
+      {t:'The Book of Secrets',y:'2004',d:'Unlocking the hidden dimensions of your life.'},
+      {t:'Super Brain',y:'2012',d:'Unleashing the explosive power of your mind — co-written with Rudy Tanzi.'},
+      {t:'The Future of God',y:'2014',d:'A practical approach to spirituality for our times.'},
+    ]
+  },
+  sagan: {
+    emoji: '🌠', name: 'Carl Sagan', role: 'Astrophysicist · Author · Science Communicator',
+    bio: 'Carl Sagan (1934–1996) was an American astronomer, planetary scientist, cosmologist, and one of the greatest science communicators who ever lived. He made the cosmos accessible to ordinary people through his Emmy Award-winning TV series "Cosmos" and his extraordinary writing. Sagan had an unparalleled ability to convey the wonder of the universe while inspiring humility, curiosity, and the scientific spirit.',
+    books: [
+      {t:'Cosmos',y:'1980',d:'Perhaps the most widely read science book in history. Companion to his TV series.'},
+      {t:'Broca\'s Brain',y:'1979',d:'Reflections on the romance of science.'},
+      {t:'The Dragons of Eden',y:'1977',d:'Speculations on the evolution of human intelligence. Pulitzer Prize winner.'},
+      {t:'Contact',y:'1985',d:'His famous science fiction novel — what would first contact with aliens look like?'},
+      {t:'A Path Where No Man Thought',y:'1990',d:'Nuclear winter and the end of the arms race.'},
+      {t:'Pale Blue Dot',y:'1994',d:'A vision of the human future in space — inspired by the famous Earth photograph.'},
+      {t:'The Demon-Haunted World',y:'1995',d:'Science as a candle in the dark. His greatest masterpiece on critical thinking.'},
+    ]
+  }
+};
+
+function openAuthor(id) {
+  const a = authorData[id];
+  if(!a) return;
+  const bookHTML = a.books.map((b,i) => `
+    <a class="book-item" href="https://www.goodreads.com/search?q=${encodeURIComponent(b.t)}" target="_blank">
+      <div class="book-num">0${i+1 < 10 ? '0'+(i+1) : i+1}</div>
+      <div class="book-info"><h5>${b.t}</h5><p>${b.d}</p></div>
+      <div class="book-year">${b.y}</div>
+    </a>`).join('');
+  const c = document.getElementById('modalContent');
+  c.innerHTML = `
+    <div class="modal-head">
+      <div class="modal-avatar">${a.emoji}</div>
+      <div class="modal-title-area">
+        <div class="modal-name">${a.name}</div>
+        <div class="modal-role">${a.role}</div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-bio">${a.bio}</div>
+      <div class="modal-section-title">COMPLETE BOOK CATALOGUE — CLICK TO EXPLORE ON GOODREADS</div>
+      <div class="book-list">${bookHTML}</div>
+    </div>`;
+  document.getElementById('authorModal').classList.add('open');
+}
+
+function closeModal(e) { if(e.target.id === 'authorModal') closeModalDirect(); }
+function closeModalDirect() { document.getElementById('authorModal').classList.remove('open'); }
+
+// ---- TOPIC IDEA CLICK ----
+function useTopicIdea(el, topic) {
+  switchPage('studio');
+  setTimeout(() => {
+    document.getElementById('scriptTopic').value = topic;
+    toast('Topic loaded: ' + topic);
+  }, 200);
+}
+
+// ---- AI SCRIPT GENERATOR ----
+async function generateScript() {
+  const topic = document.getElementById('scriptTopic').value.trim();
+  if(!topic) { toast('Please enter a topic first!'); return; }
+  const tone = document.getElementById('scriptTone').value;
+  const length = document.getElementById('scriptLength').value;
+  const btn = document.getElementById('genBtn');
+  const ph = document.getElementById('scriptPlaceholder');
+  const panel = document.getElementById('scriptEditorPanel');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>GENERATING...';
+  ph.style.display = 'block';
+  ph.innerHTML = '<span style="color:var(--gold)">✦ Writing your script<span class="loading-dots"></span></span>';
+  panel.style.display = 'none';
+
+  const lengthMap = {short:'3 to 5 minute',medium:'7 to 10 minute',long:'12 to 15 minute'};
+  const prompt = `You are Adesina Israel — host of the podcast "Heavy Crowns" on Spotify. Write a complete, compelling ${lengthMap[length]} podcast episode script with a ${tone} tone on the topic: "${topic}".
+
+The script must include:
+1. A powerful HOOK opening (first 30 seconds)
+2. A warm HOST INTRO ("Welcome back to Heavy Crowns, I'm your host Adesina Israel...")
+3. Main content with 3-4 key points, each with a story, insight, or example
+4. Practical takeaway for the listener
+5. A strong CLOSING and call to action (follow, share, leave a comment)
+
+Format it clearly with section labels. Write as if speaking directly to young Africans who are hungry to grow. Be authentic, powerful, and real. Do not use bullet points — write full spoken sentences.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{role:'user', content: prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content && data.content[0] ? data.content[0].text : 'Error generating script. Please try again.';
+    ph.style.display = 'none';
+    panel.style.display = 'block';
+    document.getElementById('scriptEditor').value = text;
+    updateWordCount();
+    toast('Script ready! Edit, copy or expand below ✦');
+  } catch(e) {
+    ph.innerHTML = '<span style="color:var(--red)">Error connecting. Please try again.</span>';
+    ph.style.display = 'block';
+  }
+  btn.disabled = false;
+  btn.innerHTML = '✦ GENERATE SCRIPT';
+}
+
+function updateWordCount() {
+  const text = document.getElementById('scriptEditor').value;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  document.getElementById('charCount').textContent = words.toLocaleString() + ' words';
+}
+
+function copyScript() {
+  const text = document.getElementById('scriptEditor').value;
+  if(!text.trim()) { toast('Nothing to copy yet!'); return; }
+  navigator.clipboard.writeText(text).then(() => toast('Full script copied to clipboard! 📋'));
+}
+
+function selectAllScript() {
+  const ed = document.getElementById('scriptEditor');
+  ed.focus();
+  ed.select();
+  toast('All text selected ☑️');
+}
+
+function clearScript() {
+  if(!confirm('Clear the entire script? This cannot be undone.')) return;
+  document.getElementById('scriptEditor').value = '';
+  updateWordCount();
+  toast('Script cleared 🗑️');
+}
+
+function downloadScript() {
+  const text = document.getElementById('scriptEditor').value;
+  if(!text.trim()) { toast('Nothing to download yet!'); return; }
+  const topic = document.getElementById('scriptTopic').value || 'episode';
+  const blob = new Blob([text], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'HeavyCrowns_' + topic.replace(/\s+/g,'_').slice(0,30) + '.txt';
+  a.click();
+  toast('Script downloaded! ⬇️');
+}
+
+function addIdea() {
+  const panel = document.getElementById('ideasPanel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  if(panel.style.display === 'block') {
+    document.getElementById('ideasEditor').focus();
+    toast('Ideas panel opened 💡 Type your additions below');
+  }
+}
+
+function copyIdeas() {
+  const text = document.getElementById('ideasEditor').value;
+  if(!text.trim()) { toast('No ideas written yet!'); return; }
+  navigator.clipboard.writeText(text).then(() => toast('Ideas copied! 📋'));
+}
+
+function clearIdeas() {
+  document.getElementById('ideasEditor').value = '';
+  toast('Ideas cleared 🗑️');
+}
+
+async function mergeIdeas() {
+  const script = document.getElementById('scriptEditor').value.trim();
+  const ideas = document.getElementById('ideasEditor').value.trim();
+  if(!script) { toast('Generate a script first!'); return; }
+  if(!ideas) { toast('Write some ideas in the Ideas panel first!'); return; }
+  const btn = event.target;
+  btn.disabled = true;
+  btn.textContent = 'Merging...';
+  const prompt = `You are a podcast script editor. Here is an existing podcast script:\n\n${script}\n\n---\n\nHere are the host's additional ideas and notes to incorporate:\n\n${ideas}\n\n---\n\nMerge these ideas naturally into the script. Keep the original script's voice and tone. Add the new ideas in the most appropriate places. Return ONLY the complete updated script, no commentary.`;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    const merged = data.content && data.content[0] ? data.content[0].text : null;
+    if(merged) {
+      document.getElementById('scriptEditor').value = merged;
+      updateWordCount();
+      document.getElementById('ideasPanel').style.display = 'none';
+      toast('Ideas merged into script! ✦');
+    }
+  } catch(e) { toast('Merge failed. Try again.'); }
+  btn.disabled = false;
+  btn.textContent = '✦ Merge Ideas into Script';
+}
+
+async function expandSection() {
+  const editor = document.getElementById('scriptEditor');
+  const selected = editor.value.substring(editor.selectionStart, editor.selectionEnd).trim();
+  if(!selected) { toast('Select a section of the script first, then click AI Expand!'); return; }
+  const expandBox = document.getElementById('expandBox');
+  const expandOutput = document.getElementById('expandOutput');
+  expandBox.style.display = 'block';
+  expandOutput.textContent = 'Expanding selected section...';
+  const prompt = `You are a podcast script writer for Adesina Israel's "Heavy Crowns" podcast. Expand and enrich the following section of a podcast script with more depth, a compelling story, vivid examples, and emotional resonance. Keep the same voice and tone. Return ONLY the expanded section:\n\n"${selected}"`;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    expandOutput.textContent = data.content && data.content[0] ? data.content[0].text : 'Error expanding. Try again.';
+    toast('Section expanded! Click "+ Add to Script" to insert ✦');
+  } catch(e) { expandOutput.textContent = 'Error. Please try again.'; }
+}
+
+function appendExpansion() {
+  const editor = document.getElementById('scriptEditor');
+  const expansion = document.getElementById('expandOutput').textContent;
+  editor.value = editor.value + '\n\n--- [EXPANDED SECTION] ---\n\n' + expansion;
+  updateWordCount();
+  document.getElementById('expandBox').style.display = 'none';
+  toast('Expansion added to script! ✦');
+}
+
+function copyExpansion() {
+  navigator.clipboard.writeText(document.getElementById('expandOutput').textContent).then(() => toast('Expansion copied! 📋'));
+}
+
+async function improveScript() {
+  const editor = document.getElementById('scriptEditor');
+  const script = editor.value.trim();
+  if(!script) { toast('No script to improve yet!'); return; }
+  const expandBox = document.getElementById('expandBox');
+  const expandOutput = document.getElementById('expandOutput');
+  expandBox.style.display = 'block';
+  expandOutput.textContent = 'AI is improving your script...';
+  const prompt = `You are a professional podcast script editor. Improve the following podcast script for "Heavy Crowns" by Adesina Israel. Make it more powerful, more emotional, better paced, and more engaging — especially for young African listeners. Sharpen the language, strengthen the hooks, deepen the stories. Return ONLY the improved complete script:\n\n${script}`;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    expandOutput.textContent = data.content && data.content[0] ? data.content[0].text : 'Error. Try again.';
+    toast('Improved version ready! Click "+ Add to Script" to replace ✦');
+  } catch(e) { expandOutput.textContent = 'Error. Please try again.'; }
+}
+
+function handleEditorKey(e) {
+  // Tab key inserts spaces instead of leaving textarea
+  if(e.key === 'Tab') {
+    e.preventDefault();
+    const ed = e.target;
+    const start = ed.selectionStart;
+    ed.value = ed.value.substring(0,start) + '    ' + ed.value.substring(ed.selectionEnd);
+    ed.selectionStart = ed.selectionEnd = start + 4;
+  }
+}
+
+// ---- DICTIONARY ----
+async function lookupWord() {
+  const word = document.getElementById('dictInput').value.trim();
+  if(!word) return;
+  const result = document.getElementById('dictResult');
+  result.style.display = 'block';
+  result.innerHTML = '<span style="color:var(--muted)">Looking up <em>' + word + '</em><span class="loading-dots"></span></span>';
+  try {
+    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+    const data = await res.json();
+    if(!Array.isArray(data) || !data[0]) {
+      result.innerHTML = `<div class="dict-word">${word}</div><p style="color:var(--muted);margin-top:8px;">No definition found for this word.</p>`;
+      return;
+    }
+    const entry = data[0];
+    const phonetic = entry.phonetic || (entry.phonetics && entry.phonetics[0] && entry.phonetics[0].text) || '';
+    let html = `<div class="dict-word">${entry.word}</div>`;
+    if(phonetic) html += `<div class="dict-phonetic">${phonetic}</div>`;
+    entry.meanings.slice(0,3).forEach(m => {
+      html += `<div class="dict-pos">${m.partOfSpeech.toUpperCase()}</div>`;
+      m.definitions.slice(0,2).forEach(d => {
+        html += `<div class="dict-def">${d.definition}</div>`;
+        if(d.example) html += `<div class="dict-example">"${d.example}"</div>`;
+      });
+    });
+    result.innerHTML = html;
+  } catch(e) {
+    result.innerHTML = `<div class="dict-word">${word}</div><p style="color:var(--muted);margin-top:8px;">Could not fetch definition. <a href="https://www.dictionary.com/browse/${encodeURIComponent(word)}" target="_blank" style="color:var(--gold);">Try Dictionary.com →</a></p>`;
+  }
+}
+
+// ---- WIKIPEDIA ----
+async function searchWiki() {
+  const q = document.getElementById('wikiInput').value.trim();
+  if(!q) return;
+  const result = document.getElementById('wikiResult');
+  result.style.display = 'block';
+  result.innerHTML = '<span style="color:var(--muted)">Searching Wikipedia<span class="loading-dots"></span></span>';
+  try {
+    const searchRes = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&format=json&origin=*&utf8=1`);
+    const searchData = await searchRes.json();
+    if(!searchData.query || !searchData.query.search || !searchData.query.search[0]) {
+      result.innerHTML = `<div class="wiki-title">No results found</div><p style="color:var(--muted)">Try different keywords.</p>`;
+      return;
+    }
+    const top = searchData.query.search[0];
+    const title = top.title;
+    const snippet = top.snippet.replace(/<[^>]+>/g, '');
+    const url = `https://en.wikipedia.org/wiki/${encodeURIComponent(title.replace(/ /g,'_'))}`;
+    result.innerHTML = `
+      <div class="wiki-title">${title}</div>
+      <div class="wiki-excerpt">${snippet}...</div>
+      <a class="wiki-link" href="${url}" target="_blank">Read full article on Wikipedia →</a>`;
+  } catch(e) {
+    result.innerHTML = `<p style="color:var(--muted)">Could not reach Wikipedia. <a href="https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(q)}" target="_blank" style="color:var(--gold);">Search directly on Wikipedia →</a></p>`;
+  }
+}
+
+// ---- QUOTE GENERATOR ----
+const quotes = {
+  resilience: [
+    {q:"It does not matter how slowly you go as long as you do not stop.",a:"— Confucius"},
+    {q:"Fall seven times, stand up eight.",a:"— Japanese Proverb"},
+    {q:"You may encounter many defeats, but you must not be defeated.",a:"— Maya Angelou"},
+    {q:"The greatest glory in living lies not in never falling, but in rising every time we fall.",a:"— Nelson Mandela"}
+  ],
+  leadership: [
+    {q:"A leader is one who knows the way, goes the way, and shows the way.",a:"— John C. Maxwell"},
+    {q:"Leadership is not about being in charge. It is about taking care of those in your charge.",a:"— Simon Sinek"},
+    {q:"The function of leadership is to produce more leaders, not more followers.",a:"— Ralph Nader"},
+    {q:"Before you are a leader, success is all about growing yourself. When you become a leader, success is all about growing others.",a:"— Jack Welch"}
+  ],
+  sacrifice: [
+    {q:"There are no shortcuts to any place worth going.",a:"— Beverly Sills"},
+    {q:"The price of anything is the amount of life you exchange for it.",a:"— Henry David Thoreau"},
+    {q:"Nothing great was ever achieved without enthusiasm.",a:"— Ralph Waldo Emerson"}
+  ],
+  success: [
+    {q:"Success is not final, failure is not fatal — it is the courage to continue that counts.",a:"— Winston Churchill"},
+    {q:"The secret of getting ahead is getting started.",a:"— Mark Twain"},
+    {q:"I have not failed. I've just found 10,000 ways that won't work.",a:"— Thomas Edison"}
+  ],
+  faith: [
+    {q:"Faith is taking the first step even when you don't see the whole staircase.",a:"— Martin Luther King Jr."},
+    {q:"Believe you can and you're halfway there.",a:"— Theodore Roosevelt"},
+    {q:"With God all things are possible.",a:"— Matthew 19:26"}
+  ]
+};
+
+function getQuote() {
+  const theme = document.getElementById('quoteInput').value.trim().toLowerCase();
+  const result = document.getElementById('quoteResult');
+  let pool = [];
+  Object.keys(quotes).forEach(k => { if(theme === '' || k.includes(theme) || theme.includes(k)) pool = pool.concat(quotes[k]); });
+  if(pool.length === 0) { Object.values(quotes).forEach(v => pool = pool.concat(v)); }
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  document.getElementById('quoteText').textContent = '"' + pick.q + '"';
+  document.getElementById('quoteAuthor').textContent = pick.a;
+  result.style.display = 'block';
+  toast('Quote ready ✦');
+}
+
+// Animation delays on grid items
+document.querySelectorAll('.tool-btn, .author-card, .ref-card').forEach((el,i) => {
+  el.style.animationDelay = (i * 0.04) + 's';
+});
+
+// ---- NEW AUTHOR DATA ----
+Object.assign(authorData, {
+  mandela: {
+    emoji: '✊', name: 'Nelson Mandela', role: 'Revolutionary · First Black President of South Africa · Nobel Peace Prize 1993',
+    bio: 'Nelson Rolihlahla Mandela (1918–2013) spent 27 years imprisoned on Robben Island for fighting apartheid, yet emerged without bitterness to lead South Africa into democracy as its first Black president. His life is the ultimate testament to resilience, forgiveness, and the long game of justice. TIME Magazine named him one of the 100 most influential people of the 20th century.',
+    books: [
+      {t:'Long Walk to Freedom',y:'1994',d:'His landmark autobiography — 27 years in prison, the birth of a nation.'},
+      {t:'Conversations with Myself',y:'2010',d:'Journals, letters, and notebooks revealing the private mind of Mandela.'},
+      {t:'Notes to the Future',y:'2012',d:'Words of wisdom selected from his speeches and writings.'},
+      {t:'Nelson Mandela: The Authorized Comic Book',y:'2009',d:'His life story in illustrated form for a new generation.'},
+      {t:'Mandela: An Illustrated Autobiography',y:'1996',d:'A visual telling of his extraordinary journey.'},
+      {t:'The Illustrated Long Walk to Freedom',y:'1996',d:'A condensed illustrated edition of his masterwork memoir.'},
+    ]
+  },
+  hill: {
+    emoji: '💰', name: 'Napoleon Hill', role: 'Author · Success Philosopher · Presidential Advisor',
+    bio: 'Napoleon Hill (1883–1970) was commissioned by steel magnate Andrew Carnegie to interview 500 of America\'s most successful people over 20 years. The result was a philosophy of success that has influenced millions worldwide. His masterwork "Think and Grow Rich" remains one of the best-selling books ever written, teaching that thoughts become things — and that desire, faith, and persistence can transform any life.',
+    books: [
+      {t:'Think and Grow Rich',y:'1937',d:'The all-time classic on the mindset of success. 100M+ copies sold worldwide.'},
+      {t:'The Law of Success',y:'1928',d:'The original 16-lesson course on achievement — the foundation of all his work.'},
+      {t:'The Master Key to Riches',y:'1945',d:'Unlocking the secrets behind enduring wealth and lasting happiness.'},
+      {t:'Outwitting the Devil',y:'1938',d:'A controversial manuscript on fear, procrastination, and how to break free.'},
+      {t:'The Magic Ladder to Success',y:'1930',d:'An accessible guide to applying success principles in everyday life.'},
+      {t:'Napoleon Hill\'s Golden Rules',y:'2009',d:'Lost writings — newly compiled wisdom from his early manuscripts.'},
+      {t:'Success Through a Positive Mental Attitude',y:'1959',d:'Co-written with W. Clement Stone — the power of PMA in achieving goals.'},
+    ]
+  },
+  hooks: {
+    emoji: '✍️', name: 'bell hooks', role: 'Professor · Author · Feminist Cultural Critic · Educator',
+    bio: 'bell hooks (1952–2021), born Gloria Jean Watkins, was one of the most powerful intellectual voices of her generation. A Distinguished Professor in Residence at Berea College, she wrote over 30 books exploring the intersections of race, gender, class, and love. She deliberately lowercased her name to shift focus from her identity to her ideas — the ideas matter more than the person.',
+    books: [
+      {t:'All About Love: New Visions',y:'2000',d:'A radical, profound exploration of what love truly means and requires.'},
+      {t:'Ain\'t I a Woman: Black Women and Feminism',y:'1981',d:'The groundbreaking debut that launched her intellectual career.'},
+      {t:'Teaching to Transgress',y:'1994',d:'Education as the practice of freedom — her philosophy of teaching.'},
+      {t:'The Will to Change: Men, Masculinity, and Love',y:'2004',d:'A compassionate call for men to embrace vulnerability and love.'},
+      {t:'Feminism Is for Everybody',y:'2000',d:'A short, accessible introduction to feminist theory and politics.'},
+      {t:'Salvation: Black People and Love',y:'2001',d:'Healing the wounds of racism through the transformative power of love.'},
+      {t:'Rock My Soul: Black People and Self-Esteem',y:'2003',d:'An unflinching look at the crisis of self-esteem in Black communities.'},
+    ]
+  },
+  feynman: {
+    emoji: '⚡', name: 'Richard P. Feynman', role: 'Theoretical Physicist · Nobel Laureate 1965 · The Great Explainer',
+    bio: 'Richard Feynman (1918–1988) won the Nobel Prize in Physics for his work on quantum electrodynamics, but he is perhaps equally celebrated for his genius at making the most complex ideas in science thrilling and accessible to ordinary people. He was a bongo-drum player, safe-cracker, artist, and above all — a relentless curious mind who believed that if you can\'t explain something simply, you don\'t really understand it.',
+    books: [
+      {t:'Surely You\'re Joking, Mr. Feynman!',y:'1985',d:'Adventures of a curious character — the most entertaining scientist memoir ever written.'},
+      {t:'What Do You Care What Other People Think?',y:'1988',d:'More adventures of a curious character. Deeply personal and funny.'},
+      {t:'The Feynman Lectures on Physics',y:'1964',d:'The greatest physics textbook ever written. Three volumes of pure brilliance.'},
+      {t:'QED: The Strange Theory of Light and Matter',y:'1985',d:'Quantum electrodynamics explained for the layperson — a masterclass.'},
+      {t:'The Pleasure of Finding Things Out',y:'1999',d:'A collection of his best talks and interviews on science and life.'},
+      {t:'The Character of Physical Law',y:'1965',d:'Seven lectures on the nature of physical laws — an absolute classic.'},
+    ]
+  }
+});
+
+// ---- LANGUAGE SCRIPT GENERATOR ----
+let currentLang = 'en';
+const langNames = {en:'English',es:'Spanish',fr:'French',de:'German',zh:'Chinese'};
+const langFlags = {en:'🇬🇧',es:'🇪🇸',fr:'🇫🇷',de:'🇩🇪',zh:'🇨🇳'};
+
+function selectLang(code, flag, name) {
+  currentLang = code;
+  document.querySelectorAll('.lang-pill').forEach(p => p.classList.remove('active'));
+  document.getElementById('lang-' + code).classList.add('active');
+  document.getElementById('langFlag').textContent = flag;
+  document.getElementById('langName').textContent = name;
+  document.getElementById('langBtnLabel').textContent = name.toUpperCase();
+  toast('Language set to ' + name + ' ' + flag);
+}
+
+// Set English active on load
+document.getElementById('lang-en').classList.add('active');
+
+async function generateLangScript() {
+  const topic = document.getElementById('langTopic').value.trim();
+  if(!topic) { toast('Please enter a topic first!'); return; }
+  const langName = langNames[currentLang] || 'English';
+  const btn = document.getElementById('langGenBtn');
+  const output = document.getElementById('langOutput');
+  const ph = document.getElementById('langPlaceholder');
+  const copyBtn = document.getElementById('langCopyBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>GENERATING...';
+  output.style.display = 'none';
+  ph.style.display = 'block';
+  ph.innerHTML = '<span style="color:var(--gold)">✦ Writing in ' + langName + '<span class="loading-dots"></span></span>';
+  copyBtn.style.display = 'none';
+  const prompt = `You are Adesina Israel, host of the motivational podcast "Heavy Crowns." Write a complete 5–8 minute podcast episode script entirely in ${langName} on the topic: "${topic}". Include a strong hook, intro greeting, 3 key points with stories, a takeaway, and a closing call to action. Write fully in ${langName} — do not switch languages. Format with clear section labels.`;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    const text = data.content && data.content[0] ? data.content[0].text : 'Error generating. Please try again.';
+    ph.style.display = 'none';
+    output.style.display = 'block';
+    output.textContent = text;
+    copyBtn.style.display = 'inline-block';
+    toast('Script ready in ' + langName + '! ✦');
+  } catch(e) {
+    ph.innerHTML = '<span style="color:var(--red)">Connection error. Please try again.</span>';
+  }
+  btn.disabled = false;
+  btn.innerHTML = '✦ GENERATE IN <span id="langBtnLabel">' + langName.toUpperCase() + '</span>';
+}
+
+function copyLangScript() {
+  navigator.clipboard.writeText(document.getElementById('langOutput').textContent).then(() => toast('Script copied! 📋'));
+}
+
+// ---- TRANSLATOR ----
+async function translateText() {
+  const text = document.getElementById('transInput').value.trim();
+  if(!text) { toast('Please enter text to translate!'); return; }
+  const fromLang = document.getElementById('transFrom').value;
+  const toLang = document.getElementById('transTo').value;
+  const output = document.getElementById('transOutput');
+  const copyBtn = document.getElementById('transCopyBtn');
+  output.style.display = 'block';
+  output.textContent = 'Translating from ' + fromLang + ' to ' + toLang + '...';
+  copyBtn.style.display = 'none';
+  const prompt = `Translate the following text from ${fromLang} to ${toLang}. Return ONLY the translated text — no explanation, no preamble, no labels. Preserve the tone, formatting, and paragraph structure.\n\n${text}`;
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    const translated = data.content && data.content[0] ? data.content[0].text : 'Translation error. Please try again.';
+    output.textContent = translated;
+    copyBtn.style.display = 'inline-block';
+    toast('Translated to ' + toLang + '! 🌍');
+  } catch(e) {
+    output.textContent = 'Connection error. Try again or use Google Translate.';
+  }
+}
+
+function copyTrans() {
+  navigator.clipboard.writeText(document.getElementById('transOutput').textContent).then(() => toast('Translation copied! 📋'));
+}
+</script>
+</body>
+</html>
+
